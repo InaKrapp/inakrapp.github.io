@@ -1,5 +1,5 @@
 ---
-title: "An example preprint / working paper"
+title: "How do German energy partnerships affect trade?"
 authors:
 - admin
 date: "2019-04-07T00:00:00Z"
@@ -17,13 +17,13 @@ publication_types: ["article"]
 publication: ""
 publication_short: ""
 
-abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+abstract: This paper evaluates the effect of energy partnerships, political dialogue forums on energy issues, on the trade between Germany and its partner states.
 
 # Summary. An optional shortened abstract.
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
+summary: This paper evaluates the effect of energy partnerships, political dialogue forums on energy issues, on the trade between Germany and its partner states.
 
 tags:
-- Large Language Models
+- How do German energy partnerships affect trade?
 
 featured: true
 
@@ -62,10 +62,6 @@ projects:
 slides: example
 ---
 
-This work is driven by the results in my [previous paper](/publication/conference-paper/) on LLMs.
-
-{{% callout note %}}
-Create your slides in Markdown - click the *Slides* button to check out the example.
-{{% /callout %}}
+This paper found that some energy partnerships have slight positive effects on overall trade and negative effects on fossil-fuel-intensive trade. However, overall, the results were very heterogenous.
 
 Add the publication's **full text** or **supplementary notes** here. You can use rich formatting such as including [code, math, and images](https://docs.hugoblox.com/content/writing-markdown-latex/).
