@@ -1,5 +1,5 @@
 ---
-title: "How do German energy partnerships affect trade"
+title: "How do German energy partnerships affect trade?"
 authors:
 - admin
 date: "2024-09-20T00:00:00Z"
