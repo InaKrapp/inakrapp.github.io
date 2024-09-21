@@ -1,5 +1,5 @@
 ---
-title: "How do German energy partnerships affect trade?"
+title: "How do German energy partnerships affect trade"
 authors:
 - admin
 date: "2019-04-07T00:00:00Z"
@@ -17,10 +17,10 @@ publication_types: ["article"]
 publication: ""
 publication_short: ""
 
-abstract: This paper evaluates the effect of energy partnerships, political dialogue forums on energy issues, on the trade between Germany and its partner states.
+abstract: This paper evaluates the effect of energy partnerships, political dialogue forums on energy issues, on the trade between Germany and its partner states.
 
 # Summary. An optional shortened abstract.
-summary: This paper evaluates the effect of energy partnerships, political dialogue forums on energy issues, on the trade between Germany and its partner states.
+summary: This paper evaluates the effect of energy partnerships, political dialogue forums on energy issues, on the trade between Germany and its partner states.
 
 tags:
 - How do German energy partnerships affect trade?
