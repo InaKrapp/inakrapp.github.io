@@ -2,7 +2,7 @@
 title: "How do German energy partnerships affect trade"
 authors:
 - admin
-date: "2023-20-09T00:00:00Z"
+date: "2023-09-20T00:00:00Z"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
