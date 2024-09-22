@@ -119,14 +119,13 @@ languages:
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
 awards:
-  - title: Spatial Data Science: The New Frontier in Analytics
+  - title: Spatial Data Science
     url: https://www.esri.com/training/catalog/5d76dcf7e9ccda09bef61294/spatial-data-science-the-new-frontier-in-analytics
     date: '2022-11-24'
     awarder: ArcGis
     icon: globe
     summary: |
       Spatial data science allows analysts to extract deeper insight from data using a comprehensive set of analytical methods and spatial algorithms, including machine learning and deep learning techniques. This course explores the application of spatial data science to uncover hidden patterns and improve predictive modeling.
-
 ---
 
 ## About Me
