@@ -1,6 +1,7 @@
 ---
 title: "An ARIMA model of the global average temperature"
 layout: post
+date: 2023-08-12
 ---
 I wrote an ARIMA model to predict the average global temperature.
 
