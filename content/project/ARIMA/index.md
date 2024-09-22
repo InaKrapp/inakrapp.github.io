@@ -1,11 +1,10 @@
 ---
-title: "Wisp: A locally running version of Whisper"
+title: "An ARIMA model of the global average temperature"
 layout: post
 date: 2023-08-12
-external_link: https://github.com/InaKrapp/whisper-locally-running
+external_link: https://github.com/InaKrapp/ARIMA_Temperature_Model
 tags:
-  - Whisper
-  - AI
-  - OpenAI
+  - R
+  - Time Series Analysis
 ---
 I created an ARIMA model to predict the increase in global temperature. Although the model is very simple, it can predict some characteristics of the global temperature increase well. 
