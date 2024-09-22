@@ -8,5 +8,4 @@ tags:
   - AI
   - OpenAI
 ---
-Whisper is a transcription software that allows to turn speech into text. I created a
- locally running version of it, Wisp, with the aim to give it a simple, intutive user interface. 
+Whisper is an AI that turns speech into text. I created a simple, intutive user interface for it. 
