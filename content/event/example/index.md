@@ -1,7 +1,7 @@
 ---
 title: Common errors in R and how to solve them 
 
-#event: Hugo Blox Builder Conference
+event: R workshop: Common errors in R and how to solve them
 #event_url: https://example.org
 
 location: Leibniz Institute for Financial Research SAFE
