@@ -97,15 +97,15 @@ skills:
       - name: Statistical Analysis
         description: ''
         percent: 80
-        icon: code-bracket
+        #icon: code-bracket
       - name: Cartography
         description: ''
         percent: 100
-        icon: chart-bar
+        #icon: chart-bar
       - name: Scientific visualization and animation
         description: ''
         percent: 40
-        icon: circle-stack
+        #icon: circle-stack
 
 
 languages:
