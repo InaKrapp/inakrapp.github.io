@@ -12,8 +12,8 @@ address:
   postcode: '60323'
   country: Germany
 
-summary: An example talk using Hugo Blox Builder's Markdown slides feature.
-abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellusac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam.'
+summary: An upcoming workshop on common errors in R
+abstract: 'One of the things that often makes programming for beginners difficult is error handling. Errors are common, everybody makes them, but for the unexperienced, error messages are often difficult to read and work with. This 75-minutes seminar will teach the participants how to read and interpret error messages, how to find their causes and how to solve them properly.'
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
