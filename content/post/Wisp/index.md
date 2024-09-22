@@ -1,6 +1,7 @@
 ---
 title: "Wisp: A locally running version of Whisper"
 layout: post
+date: 2024-04-13
 ---
 Whisper is a transcription software that allows to turn audio files into text. I created a
  locally running version of it, Wisp, with the aim to give it a simple, intutive user interface. My project can be found here: [Wisp](https://github.com/InaKrapp/whisper-locally-running)
