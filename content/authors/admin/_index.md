@@ -108,10 +108,10 @@ skills:
         #icon: circle-stack
 
 
-#languages:
-  #- name: German
+languages:
+  - name: German
     #percent: 100
-  #- name: English
+  - name: English
     #percent: 95
 
 # Awards.
