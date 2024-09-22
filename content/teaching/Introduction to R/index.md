@@ -13,8 +13,8 @@ image:
 This workshop was given on the 10th of October 2023 as a SAFE Research Data Seminar at the Leibniz Institute for Financial Research SAFE.
 
 In this tutorial, we will use R and RStudio. RStudio is a user interface which makes working with
-R much more convenient. This tutorial is intended to be run as a QuartoMarkdown file in RStudio, which allows you to execute the code yourself. To run it, download the QuartoMarkdown
-version here and open it in a recent version of RStudio.
+R much more convenient. This tutorial is intended to be run as a QuartoMarkdown file in RStudio, which allows you to execute the code yourself. To run it, download the [QuartoMarkdown
+version](https://github.com/InaKrapp/inakrapp.github.io/blob/main/static/uploads/Introduction%20to%20R.qmd) and open it in a recent version of RStudio.
 
 
 ## Where can I get R?
