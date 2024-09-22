@@ -1,7 +1,14 @@
 ---
-title: "Linear Regression with R"
+title: Linear Regression in R
+summary: A follow-up to the workshop 'Introduction to R', suitable for anyone familiar with the general principle of Linear Regression.
+date: 2023-11-20
+type: docs
+math: true
+tags:
+  - R
+image:
+  caption: 'Embed rich media such as videos and LaTeX math'
 ---
-
 ## Load data
 
 If you were not attending the previous workshop 'Introduction to R', you'll need to load the data first:
