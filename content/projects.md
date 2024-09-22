@@ -12,7 +12,7 @@ sections:
   - block: collection
     content:
       title: Selected Projects
-      text: I enjoy making things. Here are a selection of projects that I have worked on over the years.
+      text: This are some of my not directly research-related programming projects, which can also be found on [Github](https://github.com/InaKrapp)
       filters:
         folders:
           - project
