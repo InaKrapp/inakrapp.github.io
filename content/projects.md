@@ -12,7 +12,7 @@ sections:
   - block: collection
     content:
       title: Selected Projects
-      text: This are some of my not directly research-related programming projects, which can also be found on [Github](https://github.com/InaKrapp)
+      text: This are some of my not directly research-related programming projects, which can also be found on Github.
       filters:
         folders:
           - project
