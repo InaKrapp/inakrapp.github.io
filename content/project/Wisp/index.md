@@ -8,4 +8,4 @@ tags:
   - AI
   - OpenAI
 ---
-Whisper is an AI that turns speech into text. I created a simple, intutive user interface for it. 
+Whisper is an AI that turns speech into text. I created a simple, intutive user interface which allows anyone to run it locally. 
