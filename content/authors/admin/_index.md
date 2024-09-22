@@ -94,7 +94,7 @@ skills:
 
   - name: Research Skills
     items:
-      - name: Statistical Analysis
+      - name: Data Science
         description: ''
         percent: 80
         #icon: code-bracket
