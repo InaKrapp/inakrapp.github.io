@@ -110,9 +110,9 @@ skills:
 
 languages:
   - name: German
-    #percent: 100
+    percent: 100
   - name: English
-    #percent: 95
+    percent: 95
 
 # Awards.
 #   Add/remove as many awards below as you like.
