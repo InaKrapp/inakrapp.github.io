@@ -37,7 +37,6 @@ sections:
       text: |-
         I am primarily active in the field of economic geography with a quantitative focus. I do research on the persistent effects of historical events, on specific forms of international cooperation and on how to use AI to enhance this type of research. Also, I love to make maps.
         
-        Please reach out to collaborate 😃
     design:
       columns: '1'
   - block: collection
