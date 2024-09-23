@@ -117,7 +117,7 @@ skills:
         description: ''
         percent: 40
         icon: presentation-chart-line
-
+---
 
 ## About Me
 
