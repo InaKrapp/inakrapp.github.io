@@ -73,8 +73,8 @@ work:
       Responsibilities include:
       - Work on a German historical finance database
       - Regular implementation of workshops
-   
-teaching_experience:
+
+  
   - position: Tutor - Economic Informatics 1
     company_name: Goethe University
     company_url: ''
