@@ -1,6 +1,6 @@
 ---
 title: Introduction to R
-summary: A workshop for beginners in R with no previous programming experience
+summary: A workshop for beginners in R with no previous programming experience.
 date: 2023-11-20
 type: docs
 math: true
