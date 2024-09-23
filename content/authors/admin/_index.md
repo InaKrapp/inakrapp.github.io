@@ -73,6 +73,17 @@ work:
       Responsibilities include:
       - Work on a German historical finance database
       - Regular implementation of workshops
+   
+teaching_experience:
+  - position: Tutor - Economic Informatics 1
+    company_name: Goethe University
+    company_url: ''
+    company_logo: ''
+    date_start: '2019-10-01'
+    date_end: '2021-04-01'
+    summary: |2-
+      Taught a biweekly course on economic informatics, including introductions to SQL and Python.
+
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
