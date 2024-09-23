@@ -119,20 +119,6 @@ skills:
         icon: presentation-chart-line
 
 
-# Awards.
-#   Add/remove as many awards below as you like.
-#   Only `title`, `awarder`, and `date` are required.
-#   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards:
-  - title: Spatial Data Science
-    url: https://www.esri.com/training/catalog/5d76dcf7e9ccda09bef61294/spatial-data-science-the-new-frontier-in-analytics
-    date: '2022-11-24'
-    awarder: ArcGis
-    icon: globe-europe-africa
-    summary: |
-      Spatial data science allows analysts to extract deeper insight from data using a comprehensive set of analytical methods and spatial algorithms, including machine learning and deep learning techniques. This course explores the application of spatial data science to uncover hidden patterns and improve predictive modeling.
----
-
 ## About Me
 
 I am Ina Krapp, currently a Ph.D. student in Economics at Goethe University in Frankfurt am Main, Germany, and a Research Assistant at the Leibniz Institute for Financial Research SAFE. My primary interest lies in the intersection of Human Geography and Economics, and the contributions Data Science can bring to these fields.
