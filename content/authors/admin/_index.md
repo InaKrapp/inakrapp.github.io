@@ -97,11 +97,11 @@ skills:
       - name: R
         description: ''
         percent: 100
-        icon: chart-bar
+        icon: r
       - name: SQL
         description: ''
         percent: 40
-        icon: circle-stack
+        icon: postgresql
 
   - name: Research Skills
     items:
