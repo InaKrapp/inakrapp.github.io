@@ -119,12 +119,6 @@ skills:
         #icon: circle-stack
 
 
-languages:
-  - name: German
-    percent: 100
-  - name: English
-    percent: 95
-
 # Awards.
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
