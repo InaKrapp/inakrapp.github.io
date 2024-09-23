@@ -128,7 +128,7 @@ awards:
     url: https://www.esri.com/training/catalog/5d76dcf7e9ccda09bef61294/spatial-data-science-the-new-frontier-in-analytics
     date: '2022-11-24'
     awarder: ArcGis
-    icon: globe
+    icon: globe-europe-africa
     summary: |
       Spatial data science allows analysts to extract deeper insight from data using a comprehensive set of analytical methods and spatial algorithms, including machine learning and deep learning techniques. This course explores the application of spatial data science to uncover hidden patterns and improve predictive modeling.
 ---
