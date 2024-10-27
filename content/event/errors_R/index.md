@@ -12,7 +12,7 @@ address:
   postcode: '60323'
   country: Germany
 
-summary: An upcoming workshop on common errors in R
+summary: A workshop on common errors in R
 abstract: 'One of the things that often makes programming for beginners difficult is error handling. Errors are common, everybody makes them, but for the unexperienced, error messages are often difficult to read and work with. This 75-minutes seminar will teach the participants how to read and interpret error messages, how to find their causes and how to solve them properly.'
 
 # Talk start and end times.
