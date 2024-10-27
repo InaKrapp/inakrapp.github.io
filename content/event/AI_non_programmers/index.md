@@ -12,7 +12,7 @@ address:
   postcode: '60323'
   country: Germany
 
-summary: An upcoming workshop on the use of AI in academia.
+summary: A workshop on the use of AI in academia.
 abstract: 'There are many convenient AI applications which can greatly enhance the working process in academia, but some of them are still not widely known. This interactive workshop focuses on free tools which do not require technical skills and can assist in literature research and summary, qualitative and quantitative analysis, writing and improving papers.'
 
 # Talk start and end times.
