@@ -40,23 +40,23 @@ sections:
     design:
       columns: '1'
   - block: collection
-    id: papers
+    id: projects
     content:
-      title: Featured Publications
+      title: Featured Projects
       filters:
         folders:
-          - publication
+          - projects
         featured_only: true
     design:
       view: article-grid
       columns: 2
   - block: collection
     content:
-      title: Recent Publications
+      title: Recent Projects
       text: ""
       filters:
         folders:
-          - publication
+          - projects
         exclude_featured: false
     design:
       view: citation
