@@ -15,7 +15,7 @@ sections:
       text: This are some of my programming projects, which can be found on Github.
       filters:
         folders:
-          - software
+          - software # <-- This is the line we changed
     design:
       view: article-grid
       fill_image: false
