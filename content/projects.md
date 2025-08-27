@@ -1,5 +1,5 @@
 ---
-title: 'Projects'
+title: 'Software'
 date: 2024-05-19
 type: landing
 
@@ -11,7 +11,7 @@ design:
 sections:
   - block: collection
     content:
-      title: Selected Projects
+      title: Selected Software
       text: This are some of my programming projects, which can be found on Github.
       filters:
         folders:
