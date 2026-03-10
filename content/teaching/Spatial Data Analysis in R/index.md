@@ -10,15 +10,6 @@ image:
   caption: 'Embed rich media such as videos and LaTeX math'
 ---
 
-```r
-library(sf) # Spatial Features - vector data
-library(tidyverse)
-library(here)
-library(spatstat) # Point Pattern Analysis
-library(terra) # For robust spatial operations, especially with raster data
-library(mgcv) # Generalized additive regression
-```
-
 1. Introduction
 
 The spatial data ecosystem in R comprises a number of packages, each tailored to a particular data type or workflow.The most common data objects are:
@@ -34,6 +25,15 @@ Rasters – gridded values such as elevation or satellite imagery
 Many packages exist for these data types in R: sp/sf handle vector data, raster/terra work with rasters, stars is specialised for spatio‑temporal objects, and spatstat focuses on point pattern analysis, but also offers raster tools.
 
 We will focus on sf, terra and spatstat here.
+
+```r
+library(sf) # Spatial Features - vector data
+library(tidyverse)
+library(here)
+library(spatstat) # Point Pattern Analysis
+library(terra) # For robust spatial operations, especially with raster data
+library(mgcv) # Generalized additive regression
+```
 
 The code used for this workshop can be found under: https://github.com/InaKrapp/Workshops/tree/main. Most of the spatial datasets used in this workshop are too large to be uploaded on Github. To replicate the analysis, they have to be downloaded from their original sources.
 
