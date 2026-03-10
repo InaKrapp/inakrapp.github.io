@@ -4,7 +4,7 @@ layout: post
 date: 2026-03-10
 ---
 
-While I generally like to work with the [`sf`](https://r-spatial.github.io/sf/) library in R, it is unfortunate that the R ecosystem when it comes to spatial data is quite heterogeneous: Available spatial formats do not only include vector and raster data, but the structures in which they are stored are also usually heavily influenced by the design choices of authors of certain packages:
+While I generally like to work with the `sf` library in R, it is unfortunate that the R ecosystem when it comes to spatial data is quite heterogeneous: Available spatial formats do not only include vector and raster data, but the structures in which they are stored are also usually heavily influenced by the design choices of authors of certain packages:
 
 1. [`sp`](https://cran.r-project.org/package=sp), probably the first widely used spatial package in R - at least, it is among the older ones, and [`sf`](https://r-spatial.github.io/sf/), which is often treated as its successor.
 2. [`spatstat`](https://spatstat.org/), a package by the authors of "Spatial Point Patterns: Methodology and Applications with R"
