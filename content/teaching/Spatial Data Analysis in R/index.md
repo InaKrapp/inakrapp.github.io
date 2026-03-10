@@ -72,7 +72,7 @@ ggplot() +
 ```
 4. Load Night‑Light Data
 
-The Consistent and Corrected Nighttime Light dataset (CCNL) from DMSP‑OLS provides a global raster that records artificial illumination. You can download it here:https://zenodo.org/records/6644980
+The Consistent and Corrected Nighttime Light dataset (CCNL) from DMSP‑OLS provides a global raster that records artificial illumination. You can download it here: https://zenodo.org/records/6644980
 
 We will use the data from 2013.
 
