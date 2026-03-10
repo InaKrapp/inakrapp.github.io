@@ -1,16 +1,13 @@
 ---
-title: "Spatial Data Analysis in R"
-author: "Ina Krapp"
-date: "15 October 2025"
-format: pdf          # Renders the file as a PDF document
-editor: visual
-execute:
-  # Run all chunks (default is true)
-  message:  false   # hide package‑loading messages
-  warning:  false   # hide warnings
-  results:  hide    # hide normal R/Python output (print(), cat(), etc.)
-  # The figures are *not* hidden – the default is `fig.keep: all` and
-  # `fig.show: default`.
+title: Spatial Data Analysis in R
+summary: A workshop on the work with spatial data in R.
+date: 2025-10-15
+type: docs
+math: true
+tags:
+  - R
+image:
+  caption: 'Embed rich media such as videos and LaTeX math'
 ---
 
 {r}
