@@ -2,7 +2,6 @@
 title: Spatial Data Analysis in R
 summary: A workshop on the work with spatial data in R.
 date: 2025-10-15
-type: docs
 math: true
 tags:
   - R
