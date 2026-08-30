@@ -7,39 +7,18 @@
     "text": "Upcoming: Die Architektur der Datenordnung: Die Tabelle als Informationsträger in (wirtschafts-)historischen Quellen und ihre automatisierte Transformation in einen modernen Datensatz"
   },
   {
-    "objectID": "posts/Wisp/index.html",
-    "href": "posts/Wisp/index.html",
+    "objectID": "posts/Wisp.html",
+    "href": "posts/Wisp.html",
     "title": "Wisp: A locally running version of Whisper",
     "section": "",
     "text": "Whisper is a transcription software that allows to turn audio files into text. I created a locally running version of it, Wisp, with the aim to give it a simple, intutive user interface. My project can be found here: Wisp\nWhisper itself has been developed by OpenAI, which is also the company behind ChatGPT and several other Artificial Intelligence programs. You can try it out here: ‚Whisper Demo’.\nUnlike ChatGPT, Whisper does not have a user interface designed by OpenAI. Its demos, as you might have seen if you tried it out above, often are used by many people at the same time. Since they all send their requests to the same computer, people may have to wait a very long time before they receive the text. Alternatively, Whisper can be run locally, using Python, but for anyone who does not know how to use a programming language, this is not an option.\nSo the aim of my project was to make Whisper easy to use for anyone, on their own computer.\nWisp is supposed to run without internet connection. Any user runs it on their computer, meaning that the users won‘t have to wait before the program finished the text of someone else. Since it has a graphical user interface, it is easy to use for anyone who is familiar with standard office software like Microsoft Office.\nLike with many of my other projects, I learnt a lot in the process of building this program. Before I started, I had no experience in working with audio data and very little with building a graphical user interface in Python. It was also my first time I turned a Python program into an executable windows program."
   },
   {
-    "objectID": "posts/ARIMA/ARIMA.html",
-    "href": "posts/ARIMA/ARIMA.html",
-    "title": "An ARIMA model of the global average temperature",
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Blog",
     "section": "",
-    "text": "I wrote an ARIMA model to predict the average global temperature.\nI would not call it a climate model because it only covers one of the many aspects of the climate. Of course, it is much more limited compared to those developed by experts in the field. Still, writing it taught me a lot about forecasting of time series.\nToday, I would do some things different. In particular, I probably would discourage people who use ARIMA models from interpolating missing data points. The ARIMA model can still be used when some data is missing. I used interpolation originally because I also experimented with ETS models, who require a time series without gaps. But the ETS model is not in the published version of the code because its predictions were not very good.\nThe code (with extensive commentary) can be downloaded here. It is written in a quarto document and should run on any relatively recent version of R and Rstudio. The ‘Global_Temperature.txt’ and ‘merged_ice_core_yearly.csv’ files contain the data the model uses, so they have to be downloaded into the same folder as well to run the code. For anyone who just wants to take a look at the results and doesn‘t want to run or modify the code themselves, here is the pdf version.\nEdit from October 19th 2023: I uploaded a version that can be used for Workshops in Germany. It is in the subfolder ‘Workshop’."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ina Krapp",
-    "section": "",
-    "text": "I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a blog.\n\n\n\n\n\n\n\nsfhoneycombs | Easily create honeycomb maps | 2026\nsfcentralities | Simply and quickly calculate central points | 2026"
-  },
-  {
-    "objectID": "index.html#bio",
-    "href": "index.html#bio",
-    "title": "Ina Krapp",
-    "section": "",
-    "text": "I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a blog."
-  },
-  {
-    "objectID": "index.html#selected-projects",
-    "href": "index.html#selected-projects",
-    "title": "Ina Krapp",
-    "section": "",
-    "text": "sfhoneycombs | Easily create honeycomb maps | 2026\nsfcentralities | Simply and quickly calculate central points | 2026"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nsfcentralities: Calculating centralities from sf objects\n\n\n\n\n\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\nWisp: A locally running version of Whisper\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\n\n\n\n\n\nAn ARIMA model of the global average temperature\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#what-is-ollama",
@@ -74,7 +53,7 @@
     "href": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
     "title": "Coding Assistants in RStudio and Visual Studio Code",
     "section": "RStudio - Chat with a LLM:",
-    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n```r\nplot(diamonds_data, x = \"clarity\", ylab = \"Carat\", abline = TRUE, main \n=\"Diamond Data\")\n```"
+    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n```R\nplot(diamonds,\n     main=\"Diamond Dataset - Plot\",\n     xlab=\"X\",\n     ylab=\"Y\")\n```\n\nThis will produce a scatter plot showing each diamond's color against X."
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
@@ -147,8 +126,36 @@
     "text": "Helpful links:\n\nTo download R: Download R here\nTo download Python: Download Python here\nTo download RStudio: Download RStudio here\nTo download Visual Studio Code: Download Visual Studio Code here\nTo browse models available in Ollama: Search Ollama models here"
   },
   {
-    "objectID": "posts/sfcentralities/index.html",
-    "href": "posts/sfcentralities/index.html",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ina Krapp",
+    "section": "",
+    "text": "I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a blog.\n\n\n\n\n\n\n\nsfhoneycombs | Easily create honeycomb maps | 2026\nsfcentralities | Simply and quickly calculate central points | 2026"
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Ina Krapp",
+    "section": "",
+    "text": "I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a blog."
+  },
+  {
+    "objectID": "index.html#selected-projects",
+    "href": "index.html#selected-projects",
+    "title": "Ina Krapp",
+    "section": "",
+    "text": "sfhoneycombs | Easily create honeycomb maps | 2026\nsfcentralities | Simply and quickly calculate central points | 2026"
+  },
+  {
+    "objectID": "posts/ARIMA.html",
+    "href": "posts/ARIMA.html",
+    "title": "An ARIMA model of the global average temperature",
+    "section": "",
+    "text": "I wrote an ARIMA model to predict the average global temperature.\nI would not call it a climate model because it only covers one of the many aspects of the climate. Of course, it is much more limited compared to those developed by experts in the field. Still, writing it taught me a lot about forecasting of time series.\nToday, I would do some things different. In particular, I probably would discourage people who use ARIMA models from interpolating missing data points. The ARIMA model can still be used when some data is missing. I used interpolation originally because I also experimented with ETS models, who require a time series without gaps. But the ETS model is not in the published version of the code because its predictions were not very good.\nThe code (with extensive commentary) can be downloaded here. It is written in a quarto document and should run on any relatively recent version of R and Rstudio. The ‘Global_Temperature.txt’ and ‘merged_ice_core_yearly.csv’ files contain the data the model uses, so they have to be downloaded into the same folder as well to run the code. For anyone who just wants to take a look at the results and doesn‘t want to run or modify the code themselves, here is the pdf version.\nEdit from October 19th 2023: I uploaded a version that can be used for Workshops in Germany. It is in the subfolder ‘Workshop’."
+  },
+  {
+    "objectID": "posts/sfcentralities.html",
+    "href": "posts/sfcentralities.html",
     "title": "sfcentralities: Calculating centralities from sf objects",
     "section": "",
     "text": "While I generally like to work with the sf library in R, it is unfortunate that the R ecosystem when it comes to spatial data is quite heterogeneous: Available spatial formats do not only include vector and raster data, but the structures in which they are stored are also usually heavily influenced by the design choices of authors of certain packages:\n\nsp, probably the first widely used spatial package in R - at least, it is among the older ones, and sf, which is often treated as its successor.\nspatstat, a package by the authors of “Spatial Point Patterns: Methodology and Applications with R”\nterra is more often used for raster data, but also has capabilities to handle vector data, and is, in many ways, a successor to the raster package\n\n…and then there is the option to store coordinates in an ordinary R dataframe with columns named ‘Longitude’ and ‘Latitude’ or ‘X’ and ‘Y’ and ignore spatial packages entirely.\nThese are just the packages and ways to work with spatial data I encountered most frequently. And spatio-temporal analysis is also growing more common (anyone interested in this field: I highly recommend taking a look at the stars package).\nI think it is an unfortunate situation for beginners who aim to perform spatial analysis in R. Even if you have some experience, especially if it is in one package, working with another package can feel like starting from zero again. Many authors have valid reasons for their design choices, and there is a growing awareness of the issue; many packages also contain functions to transform data from one format to the other. But sometimes, I find functions implemented in packages that do not see themselves as ‘spatial’ to begin with.\nFor example, when I tried to find out how to calculate the geometric median in R, the R package that appeared first in the search results was pracma - Practical Numerical Math Functions. The package is impressive for the breadth of functions it covers, but this result also shows how different the contexts are in which functions are used. The geometric median can be used by geographers to find a central point on the map, but is also used, for example, in principal component analysis - which is an entirely different story. There are even more packages in R which offer functions for the calculation of geometric medians - Gmedian, for example, which is particularly optimized for high-dimensional, large datasets and very fast due to its reliance on C++. So many users of the geometric median do not analyse spatial data.\nBut I did, for a project, and this is a part of where sfcentralities (more precisely: the function st_geo_median) comes from. It takes sf objects as input, it gives sf objects as output, it is not reinventing the wheel, but beginner-friendly and easy to use - at least I hope so. But it is not entirely a package purely written with convenience in mind: Since spatial data can be in projected or geographic coordinates, using purely-number based implementations like pracma or Gmedian, which can not properly handle longitude and latitude values can give wrong results - sfcentralities will give an error if the user attempts it.\nWhy can other packages give wrong results? Because distances in the longitude-latitude-system are not constant: One degree corresponds to a different distance in meters depending on if you are at the equator or at the poles. So, despite the sometimes complex implementations of these packages, there are good reasons to use spatial packages for spatial data.\nsfcentralities is also a bit of an attempt to bridge the gap between sf and the dodgr package. dodgr is one of the packages that just show how powerful R can be. dodgr stands for ‘Distances on Directed Graphs’, and while it can take sf objects as input and even offers a function to download data from OpenStreetMap in sf format to use for analysis, it also heavily builds on its own data format, silicate. It allows very fast and precise distance and time calculations even in complex street networks, since it is able to take into account different modes of transport, one-way streets and other factors that go beyond a simple ‘distance in kilometers/miles’ measure.\nI have been using it to calculate a similar measure to the geometric median - a measure which minimizes the sum of distances to points - along a street network. This is not really equivalent to the geometric median because it does not necessarily fulfill a global optimality condition - I can say that the geometric median is the point which minimizes the sum of distances to all points in a set since the geometric median is calculated using Euclidean (straight-line) distances. For a network distance, I can only say that a certain point I evaluated has a higher closeness than other points I evaluated. This is the closeness centrality, and in sfcentralities, it is implemented in the function st_closeness_centrality."
