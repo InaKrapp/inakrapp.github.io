@@ -14,6 +14,111 @@
     "text": "While I generally like to work with the sf library in R, it is unfortunate that the R ecosystem when it comes to spatial data is quite heterogeneous: Available spatial formats do not only include vector and raster data, but the structures in which they are stored are also usually heavily influenced by the design choices of authors of certain packages:\n\nsp, probably the first widely used spatial package in R - at least, it is among the older ones, and sf, which is often treated as its successor.\nspatstat, a package by the authors of “Spatial Point Patterns: Methodology and Applications with R”\nterra is more often used for raster data, but also has capabilities to handle vector data, and is, in many ways, a successor to the raster package\n\n…and then there is the option to store coordinates in an ordinary R dataframe with columns named ‘Longitude’ and ‘Latitude’ or ‘X’ and ‘Y’ and ignore spatial packages entirely.\nThese are just the packages and ways to work with spatial data I encountered most frequently. And spatio-temporal analysis is also growing more common (anyone interested in this field: I highly recommend taking a look at the stars package).\nI think it is an unfortunate situation for beginners who aim to perform spatial analysis in R. Even if you have some experience, especially if it is in one package, working with another package can feel like starting from zero again. Many authors have valid reasons for their design choices, and there is a growing awareness of the issue; many packages also contain functions to transform data from one format to the other. But sometimes, I find functions implemented in packages that do not see themselves as ‘spatial’ to begin with.\nFor example, when I tried to find out how to calculate the geometric median in R, the R package that appeared first in the search results was pracma - Practical Numerical Math Functions. The package is impressive for the breadth of functions it covers, but this result also shows how different the contexts are in which functions are used. The geometric median can be used by geographers to find a central point on the map, but is also used, for example, in principal component analysis - which is an entirely different story. There are even more packages in R which offer functions for the calculation of geometric medians - Gmedian, for example, which is particularly optimized for high-dimensional, large datasets and very fast due to its reliance on C++. So many users of the geometric median do not analyse spatial data.\nBut I did, for a project, and this is a part of where sfcentralities (more precisely: the function st_geo_median) comes from. It takes sf objects as input, it gives sf objects as output, it is not reinventing the wheel, but beginner-friendly and easy to use - at least I hope so. But it is not entirely a package purely written with convenience in mind: Since spatial data can be in projected or geographic coordinates, using purely-number based implementations like pracma or Gmedian, which can not properly handle longitude and latitude values can give wrong results - sfcentralities will give an error if the user attempts it.\nWhy can other packages give wrong results? Because distances in the longitude-latitude-system are not constant: One degree corresponds to a different distance in meters depending on if you are at the equator or at the poles. So, despite the sometimes complex implementations of these packages, there are good reasons to use spatial packages for spatial data.\nsfcentralities is also a bit of an attempt to bridge the gap between sf and the dodgr package. dodgr is one of the packages that just show how powerful R can be. dodgr stands for ‘Distances on Directed Graphs’, and while it can take sf objects as input and even offers a function to download data from OpenStreetMap in sf format to use for analysis, it also heavily builds on its own data format, silicate. It allows very fast and precise distance and time calculations even in complex street networks, since it is able to take into account different modes of transport, one-way streets and other factors that go beyond a simple ‘distance in kilometers/miles’ measure.\nI have been using it to calculate a similar measure to the geometric median - a measure which minimizes the sum of distances to points - along a street network. This is not really equivalent to the geometric median because it does not necessarily fulfill a global optimality condition - I can say that the geometric median is the point which minimizes the sum of distances to all points in a set since the geometric median is calculated using Euclidean (straight-line) distances. For a network distance, I can only say that a certain point I evaluated has a higher closeness than other points I evaluated. This is the closeness centrality, and in sfcentralities, it is implemented in the function st_closeness_centrality."
   },
   {
+    "objectID": "presentations/LLM_assistants/index.html#what-is-ollama",
+    "href": "presentations/LLM_assistants/index.html#what-is-ollama",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "What is Ollama?",
+    "text": "What is Ollama?\nOllama:\n\nOffers a ChatGPT-like interface (for Windows)\nRuns models locally, guaranteeing data privacy\nDownloads models you want to run automatically\nHas a wide variety of models: We will use gemma3:1b here\nDownload to try it out: Download Ollama here"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#model-families",
+    "href": "presentations/LLM_assistants/index.html#model-families",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Model families:",
+    "text": "Model families:\n\nAmerican: Gemma (Google), GPT-OSS (OpenAI), Llama (Meta)\nTraining: Predominantly Kenya\nChinese: Qwen (Alibaba), Deepseek\nFrench: Mistral (Mistral AI)"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#model-sizes",
+    "href": "presentations/LLM_assistants/index.html#model-sizes",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Model sizes:",
+    "text": "Model sizes:\n\nLarge Language Model’s size is given in billion parameters\ngemma3:1b: Gemma3 model with 1 billion parameters\nMy rule of thumb: For 1B parameters, plan 1GB RAM\nIf you’re uncertain, look up RAM under ‘About your PC’\nOllama fails ‘gracefully’, but still good to keep in mind"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#which-model-should-i-choose",
+    "href": "presentations/LLM_assistants/index.html#which-model-should-i-choose",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Which model should I choose?",
+    "text": "Which model should I choose?\n\nModels run locally: Speed depends on your computer\nLarger models are usually more accurate, but slower\nNewer models tend to perform better\n\n\nLess relevant today:\n\n\nSpecialized coding vs. general models\nLanguage preferences"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
+    "href": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "RStudio - Chat with a LLM:",
+    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\nYou'll likely use:\n\n```R\nlibrary(dplyr)\nplot_diamonds()\n```\n\nThis will create a simple scatter plot."
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
+    "href": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "RStudio - let a LLM add code to R files:",
+    "text": "RStudio - let a LLM add code to R files:\nTo enable a LLM to add code to your R file, you need the gander package:\n\n#install.packages(\"gander\")  \nlibrary(gander)\noptions(.gander_chat = ellmer::chat_ollama(model = \"gemma3:1b\"))\n\n\nThis will also automatically add any data from the environment and code from the file to the prompt.\n\n\nLet’s try it out!\n\n\nNote: Some models add ‘R’ when they create R code."
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#rstudio---setting-a-keyboard-shortcut",
+    "href": "presentations/LLM_assistants/index.html#rstudio---setting-a-keyboard-shortcut",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "RStudio - Setting a Keyboard Shortcut",
+    "text": "RStudio - Setting a Keyboard Shortcut\nGander is intended to be used with a keyboard shortcut:\n\nIn RStudio, Tools &gt; Modify Keyboard Shortcuts &gt; Search “gander”\nChoose a shortcut: The package author recommends Ctrl+Alt+G (or Ctrl+Cmd+G on macOS), I use Ctrl+G"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#rstudio---saving-a-chat-in-the-r-profile",
+    "href": "presentations/LLM_assistants/index.html#rstudio---saving-a-chat-in-the-r-profile",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "RStudio - Saving a chat in the R Profile:",
+    "text": "RStudio - Saving a chat in the R Profile:\n\nGander requires the chat to be restarted each time a new R Session starts.\nTo avoid this, you can save the chat in your R Profile:\n\n\nusethis::edit_r_profile()\n\n\nThen, copy and paste the chat option into the file that opened. Below again the chat option we use:\n\n\nModify the profile later to change the chosen model"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#rstudio---troubleshooting",
+    "href": "presentations/LLM_assistants/index.html#rstudio---troubleshooting",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "RStudio - Troubleshooting:",
+    "text": "RStudio - Troubleshooting:\n\nYou might have to install Rtools from here if you don’t have it already: Download Rtools here\nUpdating the glue, rlang and cli packages may be required\nYou can install the development version of gander with:\n\n\n#install.packages(\"pak\")\n#pak::pak(\"simonpcouch/gander\")"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#visual-studio-code",
+    "href": "presentations/LLM_assistants/index.html#visual-studio-code",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Visual Studio Code:",
+    "text": "Visual Studio Code:\nLarge Language Models in Visual Studio Code are available as ‘Continue’ Extension:\n\nExtensions &gt; Search ‘Continue’\nSelect Ollama as Provider"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#visual-studio-code---using-models",
+    "href": "presentations/LLM_assistants/index.html#visual-studio-code---using-models",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Visual Studio Code - Using Models:",
+    "text": "Visual Studio Code - Using Models:\n\nUnlike RStudio, Visual Studio Code uses some default Ollama models: llama 3.1 8b for Chat, qwen2.5-coder:1.5b-base for Code autocompletion\nAdvantage: Requires no explicit Chat starting, runs different models\nDisadvantage: Easy to get confused"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#visual-studio-code---changing-models",
+    "href": "presentations/LLM_assistants/index.html#visual-studio-code---changing-models",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Visual Studio Code - Changing Models:",
+    "text": "Visual Studio Code - Changing Models:\n\nIn a Chat, click default model, then click on ‘add chat model’.\nUnder ‘Provider’, select Ollama if it is not selected already.\nChoose a model, or click on ‘Autodetect’ to make the models available you tried out in Ollama so far.\n\n\nLet’s try it out!"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#visual-studio-code---working-with-continue",
+    "href": "presentations/LLM_assistants/index.html#visual-studio-code---working-with-continue",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Visual Studio Code - Working with Continue:",
+    "text": "Visual Studio Code - Working with Continue:\n\nIn ‘Chat’ mode, click on or write ‘@’ to provide a file as context to your prompt.\nUse ‘Ctrl+Alt+Space’ to start a code completion.\nContinue also offers ‘Plan’ and ‘Agent’ modes instead of Chat.\n‘Agent’ mode can run code - be careful about that!"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#whats-next",
+    "href": "presentations/LLM_assistants/index.html#whats-next",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "What’s next?",
+    "text": "What’s next?\n\nMany new models, like gemma3:4b, are multimodal:\nThey can process images and videos\nOllama requires terminal to do that:\n\n\n ollama run gemma3:4b \"What's in this image?\" \"path/to/image.png\"\n\n\nIf you are interested in other agents, you can take a look at Goethe University’s Ai Toollab"
+  },
+  {
+    "objectID": "presentations/LLM_assistants/index.html#helpful-links",
+    "href": "presentations/LLM_assistants/index.html#helpful-links",
+    "title": "Coding Assistants in RStudio and Visual Studio Code",
+    "section": "Helpful links:",
+    "text": "Helpful links:\n\nTo download R: Download R here\nTo download Python: Download Python here\nTo download RStudio: Download RStudio here\nTo download Visual Studio Code: Download Visual Studio Code here\nTo browse models available in Ollama: Search Ollama models here"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Ina Krapp",

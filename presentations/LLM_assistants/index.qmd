@@ -1,0 +1,206 @@
+---
+title: "Coding Assistants in RStudio and Visual Studio Code"
+author: "Ina Krapp"
+format:
+  revealjs: 
+    theme: simple
+    self-contained: true
+editor: visual
+---
+
+## What is Ollama?
+
+**Ollama:**
+
+::: incremental
+-   Offers a ChatGPT-like interface (for Windows)
+
+-   Runs models locally, guaranteeing data privacy
+
+-   Downloads models you want to run automatically
+
+-   Has a wide variety of models: We will use gemma3:1b here
+
+-   **Download to try it out:** [Download Ollama here](https://ollama.com/download "Download Ollama here")
+:::
+
+## Model families:
+
+::: incremental
+-   American: Gemma (Google), GPT-OSS (OpenAI), Llama (Meta)
+
+-   Training: Predominantly Kenya
+
+-   Chinese: Qwen (Alibaba), Deepseek
+
+-   French: Mistral (Mistral AI)
+:::
+
+## Model sizes:
+
+::: incremental
+-   Large Language Model's size is given in billion parameters
+-   gemma3:1b: Gemma3 model with 1 billion parameters
+-   My rule of thumb: For 1B parameters, plan 1GB RAM
+-   If you're uncertain, look up RAM under 'About your PC'
+-   Ollama fails 'gracefully', but still good to keep in mind
+:::
+
+## Which model should I choose?
+
+::: incremental
+-   Models run locally: Speed depends on your computer
+-   Larger models are usually more accurate, but slower
+-   Newer models tend to perform better
+:::
+
+::: {.fragment .fade-up}
+Less relevant today:
+:::
+
+::: incremental
+-   Specialized coding vs. general models
+-   Language preferences
+:::
+
+## RStudio - Chat with a LLM:
+
+First, install the ellmer package and start a chat in it:
+
+```{r, echo = TRUE}
+#install.packages("ellmer")
+library("ellmer") 
+chat <- chat_ollama(model = "gemma3:1b")
+chat$chat("How can I create a plot of the diamonds dataset in R? Answer briefly.")
+```
+
+## RStudio - let a LLM add code to R files:
+
+To enable a LLM to add code to your R file, you need the gander package:
+
+```{r, echo = TRUE}
+#install.packages("gander")  
+library(gander)
+options(.gander_chat = ellmer::chat_ollama(model = "gemma3:1b"))
+```
+
+::: {.fragment .fade-up}
+This will also automatically add any data from the environment and code from the file to the prompt.
+:::
+
+::: {.fragment .fade-up}
+**Let's try it out!**
+:::
+
+::: {.fragment .fade-up}
+Note: Some models add 'R' when they create R code.
+:::
+
+## RStudio - Setting a Keyboard Shortcut
+
+Gander is intended to be used with a keyboard shortcut:
+
+-   In RStudio, Tools \> Modify Keyboard Shortcuts \> Search "gander"
+
+-   Choose a shortcut: The package author recommends Ctrl+Alt+G (or Ctrl+Cmd+G on macOS), I use Ctrl+G
+
+## RStudio - Saving a chat in the R Profile:
+
+-   Gander requires the chat to be restarted each time a new R Session starts.
+
+-   To avoid this, you can save the chat in your R Profile:
+
+```{r, echo = TRUE}
+usethis::edit_r_profile()
+```
+
+-   Then, copy and paste the chat option into the file that opened. Below again the chat option we use:
+
+```{r}
+options(.gander_chat = ellmer::chat_ollama(model = "gemma3:1b"))
+```
+
+-   Modify the profile later to change the chosen model
+
+## RStudio - Troubleshooting:
+
+-   You might have to install Rtools from here if you don’t have it already: [Download Rtools here](https://cran.rstudio.com/bin/windows/Rtools/)
+-   Updating the glue, rlang and cli packages may be required
+-   You can install the development version of gander with:
+
+```{r, echo = TRUE}
+#install.packages("pak")
+#pak::pak("simonpcouch/gander")
+```
+
+## Visual Studio Code:
+
+Large Language Models in Visual Studio Code are available as 'Continue' Extension:
+
+::: incremental
+-   Extensions \> Search 'Continue'
+
+-   Select Ollama as Provider
+:::
+
+## Visual Studio Code - Using Models:
+
+::: incremental
+-   Unlike RStudio, Visual Studio Code uses some default Ollama models: llama 3.1 8b for Chat, qwen2.5-coder:1.5b-base for Code autocompletion
+
+-   Advantage: Requires no explicit Chat starting, runs different models
+
+-   Disadvantage: Easy to get confused
+:::
+
+## Visual Studio Code - Changing Models:
+
+::: incremental
+-   In a Chat, click default model, then click on ‘add chat model’.
+
+-   Under ‘Provider’, select Ollama if it is not selected already.
+
+-   Choose a model, or click on ‘Autodetect’ to make the models available you tried out in Ollama so far.
+:::
+
+::: {.fragment .fade-up}
+**Let's try it out!**
+:::
+
+## Visual Studio Code - Working with Continue:
+
+::: incremental
+-   In 'Chat' mode, click on or write '\@' to provide a file as context to your prompt.
+
+-   Use 'Ctrl+Alt+Space’ to start a code completion.
+
+-   Continue also offers 'Plan' and 'Agent' modes instead of Chat.
+
+-   'Agent' mode can run code - be careful about that!
+:::
+
+## What's next?
+
+-   Many new models, like gemma3:4b, are multimodal:
+
+-   They can process images and videos
+
+-   Ollama requires terminal to do that:
+
+```{bash, echo = TRUE, eval=FALSE}
+ ollama run gemma3:4b "What's in this image?" "path/to/image.png"
+```
+
+-   If you are interested in other agents, you can take a look at Goethe University's [Ai Toollab](https://gki.studiumdigitale.uni-frankfurt.de/ai-toollab/)
+
+## Helpful links:
+
+-   To download R: [Download R here](https://cran.uni-muenster.de/)
+
+-   To download Python: [Download Python here](https://www.python.org/downloads/)
+
+-   To download RStudio: [Download RStudio here](https://posit.co/download/rstudio-desktop/)
+
+-   To download Visual Studio Code: [Download Visual Studio Code here](https://code.visualstudio.com/)
+
+-   To browse models available in Ollama: [Search Ollama models here](https://ollama.com/search)
