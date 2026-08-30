@@ -46,7 +46,7 @@
     "href": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
     "title": "Coding Assistants in RStudio and Visual Studio Code",
     "section": "RStudio - Chat with a LLM:",
-    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\nYou'll likely use:\n\n```R\nlibrary(dplyr)\nplot_diamonds()\n```\n\nThis will create a simple scatter plot."
+    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n```R\n# Read the diamonds data\ndata &lt;- read.csv(\"diamonds.csv\") \n\n#Create a scatter plot\nplot(data$X, data$Y, main = \"Diamonds Dataset Plot\",ylab = \"Concentation\", xlab\n= \"X\")\n```\n\nThis code first loads the data. Then, `plot()` creates the scatter plot.  It \nwill visually demonstrate the concentration of diamonds' properties in the \nplot."
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
