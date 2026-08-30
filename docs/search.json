@@ -9,8 +9,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Website",
+    "title": "Ina Krapp",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a technical blog.\n\n\n\n\n\n\n\nsfhoneycombs | Easily create honeycomb maps | 2026 sfcentralities | Simply and quickly calculate central points | 2026"
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Ina Krapp",
+    "section": "",
+    "text": "I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.\nOn this site I keep a list of my publications, presentations, and my CV, as well as a technical blog."
+  },
+  {
+    "objectID": "index.html#selected-projects",
+    "href": "index.html#selected-projects",
+    "title": "Ina Krapp",
+    "section": "",
+    "text": "sfhoneycombs | Easily create honeycomb maps | 2026 sfcentralities | Simply and quickly calculate central points | 2026"
   }
 ]
