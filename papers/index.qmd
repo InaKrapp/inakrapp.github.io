@@ -1,0 +1,8 @@
+---
+title: "Papers"
+author: "Ina Krapp"
+---
+
+Upcoming:
+Die Architektur der Datenordnung: 
+Die Tabelle als Informationsträger in (wirtschafts-)historischen Quellen und ihre automatisierte Transformation in einen modernen Datensatz
