@@ -30,8 +30,8 @@ comments: false
 I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields.
 By training I'm a geographer and quantitative economist, but I've learnt several programming languages along the way and program all the time.
 
-On this site I keep a list of [my publications](papers), [presentations](talks), 
-and [my CV](cv.pdf), as well as a [technical blog](blog.html).
+On this site I keep a list of [my publications](papers), [presentations](presentations), 
+and [my CV](cv.pdf), as well as a [blog](posts).
 
 <p></p>
 

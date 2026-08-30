@@ -8,16 +8,12 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: "Home"
-        href: index.html
       - text: "Papers"
         href: papers
       - text: "Presentations"
         href: presentations
       - text: "Blog"
-        href: blog.html
-      - icon: rss
-        href: blog.xml
+        href: posts
 
 format:
   html:
