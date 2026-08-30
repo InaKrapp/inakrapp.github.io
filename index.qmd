@@ -40,6 +40,7 @@ and [my CV](cv.pdf), as well as a [technical blog](blog.html).
 #### R Packages
 
 **[sfhoneycombs](https://github.com/InaKrapp/sfhoneycombs)** | Easily create honeycomb maps | 2026
+
 **[sfcentralities](https://github.com/InaKrapp/sfcentralities)** | Simply and quickly calculate central points | 2026 
 
 

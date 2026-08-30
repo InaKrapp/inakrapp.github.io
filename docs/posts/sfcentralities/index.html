@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-03-10">
 
-<title>Ina Krapp</title>
+<title>sfcentralities: Calculating centralities from sf objects – Ina Krapp</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-53e3a944814ffa054ec3c69e0c60a051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-53e3a944814ffa054ec3c69e0c60a051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,19 +71,19 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ina Krapp</span>
     </a>
   </div>
@@ -92,11 +94,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,61 +112,64 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<div class="quarto-about-trestles page-columns page-full">
-  <div class="about-entity">
-    <img src="avatar.png" class="about-image
-  rounded " style="width: 20em;">
+<main class="content" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ina Krapp</h1>
+<h1 class="title">sfcentralities: Calculating centralities from sf objects</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 10, 2026</p>
+    </div>
   </div>
+  
+    
+  </div>
+  
+
+
 </header>
-    <div class="about-links">
-  <a href="https://github.com/InaKrapp" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="mailto:ina.krapp@dwd.de" class="about-link" rel="" target="">
-     <span class="about-link-text">Email</span>
-  </a>
-  <a href="/blog.html" class="about-link" rel="" target="">
-     <span class="about-link-text">Blog</span>
-  </a>
-  <a href="/cv.pdf" class="about-link" rel="" target="">
-     <span class="about-link-text">CV</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents page-columns page-full"><main class="content page-columns page-full" id="quarto-document-content">
-<div class="column-page">
-<section id="bio" class="level2">
-<h2 data-anchor-id="bio">Bio</h2>
-<p>I am Ina Krapp, a Technical Employee working for the German Weather Service. My primary interest lies in the intersection of Geography and Informatics, and the contributions AI can bring to these fields. By training I’m a geographer and quantitative economist, but I’ve learnt several programming languages along the way and program all the time.</p>
-<p>On this site I keep a list of <a href="papers">my publications</a>, <a href="talks">presentations</a>, and <a href="cv.pdf">my CV</a>, as well as a <a href="blog.html">technical blog</a>.</p>
-<p>
-</p>
-</section>
-<section id="selected-projects" class="level2">
-<h2 data-anchor-id="selected-projects">Selected Projects</h2>
-<section id="r-packages" class="level4">
-<h4 data-anchor-id="r-packages">R Packages</h4>
-<p><strong><a href="https://github.com/InaKrapp/sfhoneycombs">sfhoneycombs</a></strong> | Easily create honeycomb maps | 2026</p>
-<p><strong><a href="https://github.com/InaKrapp/sfcentralities">sfcentralities</a></strong> | Simply and quickly calculate central points | 2026</p>
-</section>
-</section>
-</div>
-<p><link rel="me" href="https://github.com/InaKrapp"></p>
 
 
-</main></div>
-</div>
- <!-- /main -->
+<p>While I generally like to work with the <code>sf</code> library in R, it is unfortunate that the R ecosystem when it comes to spatial data is quite heterogeneous: Available spatial formats do not only include vector and raster data, but the structures in which they are stored are also usually heavily influenced by the design choices of authors of certain packages:</p>
+<ol type="1">
+<li><a href="https://cran.r-project.org/package=sp"><code>sp</code></a>, probably the first widely used spatial package in R - at least, it is among the older ones, and <a href="https://r-spatial.github.io/sf/"><code>sf</code></a>, which is often treated as its successor.</li>
+<li><a href="https://spatstat.org/"><code>spatstat</code></a>, a package by the authors of “Spatial Point Patterns: Methodology and Applications with R”</li>
+<li><a href="https://rspatial.github.io/terra/"><code>terra</code></a> is more often used for raster data, but also has capabilities to handle vector data, and is, in many ways, a successor to the <a href="https://cran.r-project.org/package=raster"><code>raster</code></a> package</li>
+</ol>
+<p>…and then there is the option to store coordinates in an ordinary R dataframe with columns named ‘Longitude’ and ‘Latitude’ or ‘X’ and ‘Y’ and ignore spatial packages entirely.</p>
+<p>These are just the packages and ways to work with spatial data I encountered most frequently. And spatio-temporal analysis is also growing more common (anyone interested in this field: I highly recommend taking a look at the <a href="https://r-spatial.github.io/stars/"><code>stars</code></a> package).</p>
+<p>I think it is an unfortunate situation for beginners who aim to perform spatial analysis in R. Even if you have some experience, especially if it is in one package, working with another package can feel like starting from zero again. Many authors have valid reasons for their design choices, and there is a growing awareness of the issue; many packages also contain functions to transform data from one format to the other. But sometimes, I find functions implemented in packages that do not see themselves as ‘spatial’ to begin with.</p>
+<p>For example, when I tried to find out how to calculate the geometric median in R, the R package that appeared first in the search results was <a href="https://cran.r-project.org/package=pracma"><code>pracma</code></a> - Practical Numerical Math Functions. The package is impressive for the breadth of functions it covers, but this result also shows how different the contexts are in which functions are used. The geometric median can be used by geographers to find a central point on the map, but is also used, for example, in principal component analysis - which is an entirely different story. There are even more packages in R which offer functions for the calculation of geometric medians - <a href="https://cran.r-project.org/package=Gmedian"><code>Gmedian</code></a>, for example, which is particularly optimized for high-dimensional, large datasets and very fast due to its reliance on C++. So many users of the geometric median do not analyse spatial data.</p>
+<p>But I did, for a project, and this is a part of where <a href="https://github.com/InaKrapp/sfcentralities"><code>sfcentralities</code></a> (more precisely: the function <code>st_geo_median</code>) comes from. It takes <code>sf</code> objects as input, it gives <code>sf</code> objects as output, it is not reinventing the wheel, but beginner-friendly and easy to use - at least I hope so. But it is not entirely a package purely written with convenience in mind: Since spatial data can be in projected or geographic coordinates, using purely-number based implementations like <code>pracma</code> or <code>Gmedian</code>, which can not properly handle longitude and latitude values can give wrong results - <code>sfcentralities</code> will give an error if the user attempts it.</p>
+<p>Why can other packages give wrong results? Because distances in the longitude-latitude-system are not constant: One degree corresponds to a different distance in meters depending on if you are at the equator or at the poles. So, despite the sometimes complex implementations of these packages, there are good reasons to use spatial packages for spatial data.</p>
+<p><code>sfcentralities</code> is also a bit of an attempt to bridge the gap between <code>sf</code> and the <a href="https://github.com/UrbanAnalyst/dodgr"><code>dodgr</code></a> package. <code>dodgr</code> is one of the packages that just show how powerful R can be. <code>dodgr</code> stands for ‘Distances on Directed Graphs’, and while it can take <code>sf</code> objects as input and even offers a function to download data from OpenStreetMap in <code>sf</code> format to use for analysis, it also heavily builds on its own data format, <a href="https://cran.r-project.org/package=silicate"><code>silicate</code></a>. It allows very fast and precise distance and time calculations even in complex street networks, since it is able to take into account different modes of transport, one-way streets and other factors that go beyond a simple ‘distance in kilometers/miles’ measure.</p>
+<p>I have been using it to calculate a similar measure to the geometric median - a measure which minimizes the sum of distances to points - along a street network. This is not really equivalent to the geometric median because it does not necessarily fulfill a global optimality condition - I can say that the geometric median is the point which minimizes the sum of distances to all points in a set since the geometric median is calculated using Euclidean (straight-line) distances. For a network distance, I can only say that a certain point I evaluated has a higher closeness than other points I evaluated. This is the closeness centrality, and in <code>sfcentralities</code>, it is implemented in the function <code>st_closeness_centrality</code>.</p>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
