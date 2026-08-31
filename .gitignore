@@ -6,4 +6,5 @@
 /.quarto/
 **/*.quarto_ipynb
 
-Personal_note.txt
+Personal_note.txt # Personal notes on what to do in this repository.
+webshot_code.R #To automatically create thumbnails for presentations

@@ -6,5 +6,11 @@
       "/posts/Wisp.html",
       "/posts/ARIMA.html"
     ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/presentations/LLM_assistants/index.html"
+    ]
   }
 ]

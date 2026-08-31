@@ -1,0 +1,11 @@
+To render the site and push it to github, run this in the terminal:
+
+quarto render
+git add docs
+git commit -m "Publish site to docs/"
+git push
+
+
+https://orcid.org/0009-0009-5880-1779
+
+CV und Orchid ergänzen

@@ -11,7 +11,7 @@ website:
       - text: "Papers"
         href: papers
       - text: "Presentations"
-        href: presentations
+        href: presentations.qmd
       - text: "Blog"
         href: posts
 

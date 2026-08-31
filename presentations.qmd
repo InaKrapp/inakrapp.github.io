@@ -1,0 +1,10 @@
+---
+title: "Presentations"
+listing:
+  contents: presentations
+  type: grid
+  image-height: "180px"
+  fields: [image, title, subtitle, date]
+  sort: "date desc"
+page-layout: full
+---
