@@ -6,11 +6,11 @@
     ]
   },
   {
-    "listing": "/posts/index.html",
+    "listing": "/blog/index.html",
     "items": [
-      "/posts/sfcentralities.html",
-      "/posts/Wisp.html",
-      "/posts/ARIMA.html"
+      "/blog/sfcentralities.html",
+      "/blog/Wisp.html",
+      "/blog/ARIMA.html"
     ]
   }
 ]
