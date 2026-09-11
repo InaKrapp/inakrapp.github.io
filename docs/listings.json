@@ -1,16 +1,16 @@
 [
   {
+    "listing": "/presentations.html",
+    "items": [
+      "/presentations/LLM_assistants/index.html"
+    ]
+  },
+  {
     "listing": "/posts/index.html",
     "items": [
       "/posts/sfcentralities.html",
       "/posts/Wisp.html",
       "/posts/ARIMA.html"
-    ]
-  },
-  {
-    "listing": "/presentations.html",
-    "items": [
-      "/presentations/LLM_assistants/index.html"
     ]
   }
 ]
