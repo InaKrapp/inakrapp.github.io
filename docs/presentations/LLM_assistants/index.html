@@ -1117,9 +1117,15 @@ Ina Krapp
 <span id="cb1-3"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">&quot;gemma3:1b&quot;</span>)</span>
 <span id="cb1-4"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">&quot;How can I create a plot of the diamonds dataset in R? Answer briefly.&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>```r
-plot(diamonds, factor(&quot;condition&quot;), main=&quot;Diamonds Data Plot&quot;)
-```</code></pre>
+<pre><code>Here&#39;s how to create a simple plot of the diamonds dataset in R:
+
+1.  ```R
+      ggplot(data = diamonds, aes(x = factor(x), y = value)) +
+        geom_point()
+      ```
+    This generates a scatter plot of the diamonds&#39; values.
+
+**To run the code, you&#39;ll need the `diamonds` dataset as a data source.**</code></pre>
 </div>
 </div>
 </section>
