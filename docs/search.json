@@ -21,11 +21,123 @@
     "text": "I wrote an ARIMA model to predict the average global temperature.\nI would not call it a climate model because it only covers one of the many aspects of the climate. Of course, it is much more limited compared to those developed by experts in the field. Still, writing it taught me a lot about forecasting of time series.\nToday, I would do some things different. In particular, I probably would discourage people who use ARIMA models from interpolating missing data points. The ARIMA model can still be used when some data is missing. I used interpolation originally because I also experimented with ETS models, who require a time series without gaps. But the ETS model is not in the published version of the code because its predictions were not very good.\nThe code (with extensive commentary) can be downloaded here. It is written in a quarto document and should run on any relatively recent version of R and Rstudio. The ‘Global_Temperature.txt’ and ‘merged_ice_core_yearly.csv’ files contain the data the model uses, so they have to be downloaded into the same folder as well to run the code. For anyone who just wants to take a look at the results and doesn‘t want to run or modify the code themselves, here is the pdf version.\nEdit from October 19th 2023: I uploaded a version that can be used for Workshops in Germany. It is in the subfolder ‘Workshop’."
   },
   {
-    "objectID": "presentations.html",
-    "href": "presentations.html",
-    "title": "Presentations",
-    "section": "",
-    "text": "Coding Assistants in RStudio and Visual Studio Code\n\n\n\n\n\nNo matching items"
+    "objectID": "presentations/Statistik/index.html#was-ist-statistik",
+    "href": "presentations/Statistik/index.html#was-ist-statistik",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Was ist Statistik?",
+    "text": "Was ist Statistik?\n\nDeskriptive Statistik: Zusammenfassung, Visualisierung\nDas Versprechen: Aussagen über X, Y und ihre Gemeinsamkeiten und Unterschiede\nInferenzstatistik: Modellierung von Zusammenhängen, Vorhersage\nDas Versprechen: Anhand von Zahlen beweisen, dass \\(X \\rightarrow Y\\)gilt"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#das-paradox-der-regression",
+    "href": "presentations/Statistik/index.html#das-paradox-der-regression",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Das Paradox der Regression",
+    "text": "Das Paradox der Regression\n\nLineare Regression modelliert den Zusammenhang zwischen Variablen X und Y\nVoraussetzung: Es muss ein linearer Zusammenhang der Form \\(X \\rightarrow Y\\) bestehen\nHeißt das, man kann sie nur anwenden, wenn man den Zusammenhang vorher schon kennt? Braucht man sie dann noch?\nRegression trifft auch Aussagen über Stärke und Richtung des Zusammenhanges\nAber: Sie erfordert sehr viele Annahmen"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#das-annahmenproblem",
+    "href": "presentations/Statistik/index.html#das-annahmenproblem",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Das Annahmenproblem",
+    "text": "Das Annahmenproblem\n\nJe ‘fortgeschrittener’ eine statistische Methode ist, desto mehr Annahmen braucht sie in der Regel:\nMedian, Mittelwert und Standardabweichung: (Fast) keine Annahmen\nLineare Regression: Erfordert Annahmen über Richtung (\\(X \\rightarrow Y\\)), lineare Form des Zusammenhanges und Unabhängigkeit von weiteren Einflüssen\nViele dieser Annahmen lassen sich selten oder gar nicht testen, die Unabhängigkeit von weiteren Einflüssen ist fast nie erfüllt"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#wie-häufig-ist-die-normalverteilung",
+    "href": "presentations/Statistik/index.html#wie-häufig-ist-die-normalverteilung",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Wie häufig ist die Normalverteilung?",
+    "text": "Wie häufig ist die Normalverteilung?\nFür das Berechnen von p-Werten wurde oft davon ausgegangen, dass Werte normalverteilt sind. Aber nicht normalverteilt sind bspw.\n\ndas Handelsvolumen zwischen Staaten,\ndas Einkommen und das Vermögen einer Bevölkerung\ndas Körpergewicht und die Körpergröße,\noder auch sämtliche binäre Variablen (Ja-Nein-Antworten)"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#wie-häufig-ist-die-normalverteilung-1",
+    "href": "presentations/Statistik/index.html#wie-häufig-ist-die-normalverteilung-1",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Wie häufig ist die Normalverteilung?",
+    "text": "Wie häufig ist die Normalverteilung?"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#das-problem-mit-der-autokorrelation",
+    "href": "presentations/Statistik/index.html#das-problem-mit-der-autokorrelation",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Das Problem mit der Autokorrelation",
+    "text": "Das Problem mit der Autokorrelation\n\nDie Lösung: Robuste Standardfehler\nDas nächste Problem: Diese erfassen keine räumliche oder zeitliche Autokorrelation…\nRegressionen räumlicher Daten in einfachen linearen Regressionen sind fast immer signifikant - selbst wenn die Variablen zufällig generiert sind!"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#nähere-orte-haben-mehr-miteinander-gemeinsam",
+    "href": "presentations/Statistik/index.html#nähere-orte-haben-mehr-miteinander-gemeinsam",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Nähere Orte haben mehr miteinander gemeinsam",
+    "text": "Nähere Orte haben mehr miteinander gemeinsam\nDieser Effekt tritt immer dann auf, wenn näher beieinander liegende Orte sich ähneln.\nEin Beispiel lässt sich folgendermaßen simulieren\n\nIch generiere 5 zufällige Zentren\nIch gebe 500 zufällig im Raum verteilten Punkten Werte, die von der Entfernung zu den Zentren abhängen"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#die-simulation",
+    "href": "presentations/Statistik/index.html#die-simulation",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Die Simulation",
+    "text": "Die Simulation"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#nähere-orte-haben-mehr-miteinander-gemeinsam-1",
+    "href": "presentations/Statistik/index.html#nähere-orte-haben-mehr-miteinander-gemeinsam-1",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Nähere Orte haben mehr miteinander gemeinsam",
+    "text": "Nähere Orte haben mehr miteinander gemeinsam\n\nDa es ein Zufallsprozess ist, sind X und Y unabhängig voneinander\nDennoch ist der statistische Zusammenhang zwischen ihnen in einem linearen Modell fast immer signifkant\nDer Koeffizient kann positiv oder negativ sein"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#die-künstliche-signifikanz",
+    "href": "presentations/Statistik/index.html#die-künstliche-signifikanz",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Die künstliche Signifikanz",
+    "text": "Die künstliche Signifikanz\n\n\n\n==========================================================\n\n\nSIMULATION: Räumliche Autokorrelation vs. Unabhängigkeit\n\n\n==========================================================\n\n\nNominale Stichprobe (n): 500 | Effektive Cluster (k): 5\n\n\nKoeffizient (Richtung des Zusammenhangs): 0.1218\n\n\n----------------------------------------------------------\n\n\nModell               Koeff.       Std.Error    t-Stat       p-Wert      \n\n\nOLS (falsch)         0.1218       0.0246       4.9524       0.0000      \n\n\nKorrigiert           0.1218       0.2460       0.4952       0.6464      \n\n\n----------------------------------------------------------\n\n\nERGEBNIS: OLS meldet fälschlicherweise Signifikanz (Typ-I-Fehler)!\n\n\n=========================================================="
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#das-wirkliche-problem-die-stichprobengröße",
+    "href": "presentations/Statistik/index.html#das-wirkliche-problem-die-stichprobengröße",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Das wirkliche Problem: Die Stichprobengröße",
+    "text": "Das wirkliche Problem: Die Stichprobengröße\n\nIn linearer Regression wird Signifikanz anhand der Zahl der voneinander unabhängigen Beobachtungen berechnet\nIm Beispiel wurde sie zunächst an 500 Beobachtungen berechnet - unabhängig voneinander waren aber nur 5\nGerade im geographischem Kontext ist fraglich, ob es voneinander unabhängige Beobachtungen gibt"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#länder-als-kontrollvariablen",
+    "href": "presentations/Statistik/index.html#länder-als-kontrollvariablen",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Länder als Kontrollvariablen?",
+    "text": "Länder als Kontrollvariablen?\n\nRäumliche oder zeitliche Einheiten (Länder, Jahre) als erklärende Variablen sind oft sehr gut darin, einen hohen Prozentsatz der Daten zu ‘erklären’\nKausale Zusammenhänge werden durch sie aber eher verborgen als gefunden\nSie sind leicht für politische Zwecke manipulierbar, da Räume beliebig zugeschnitten werden können\nZum Finden der ‘richtigen’ Räume bräuchte man Einsicht in den realen Datengenerierungsprozess…und hätte man diese, bräuchte man die Statistik nicht mehr…"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#länder-als-kontrollvariablen-1",
+    "href": "presentations/Statistik/index.html#länder-als-kontrollvariablen-1",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Länder als Kontrollvariablen?",
+    "text": "Länder als Kontrollvariablen?"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#länder-als-kontrollvariablen-2",
+    "href": "presentations/Statistik/index.html#länder-als-kontrollvariablen-2",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Länder als Kontrollvariablen?",
+    "text": "Länder als Kontrollvariablen?\n\n\n\n==========================================================\n\n\nSIMULATION: Räumliche Autokorrelation (64 Boxen)\n\n\n==========================================================\n\n\nNominale Stichprobe (n): 500 | Effektive Boxen (k): 64\n\n\nKoeffizient (Richtung des Zusammenhangs): ~0.1218 (naiv) vs ~0.1703 (Boxen)\n\n\n----------------------------------------------------------\n\n\nModell               Koeff.       Std.Error    t-Stat       p-Wert      \n\n\nOLS (n=500)          0.1218       0.0246       4.9524       0.0000      \n\n\nBoxen (n=64)         0.1703       0.0749       2.2721       0.0266      \n\n\n----------------------------------------------------------\n\n\nERGEBNIS: Beide Modelle sehen auf dem 5%-Niveau einen Zusammenhang.\n\n\n=========================================================="
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#ausblick",
+    "href": "presentations/Statistik/index.html#ausblick",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Ausblick:",
+    "text": "Ausblick:\n\nDa immer mehr geographisch kleinräumige Daten auch in anderen Wissenschaften (VWL, Soziologie, Politikwissenschaften) verwendet werden, wird das Problem auch dort präsenter\nGleichzeitig sind nicht-räumliche Daten (in denen räumliche Zusammenhänge ‘versteckt’ sind) auch keine Lösung\nAuch andere (nichtlineare) Modelle haben nicht-widerlegbare Annahmen"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#was-kann-man-da-machen",
+    "href": "presentations/Statistik/index.html#was-kann-man-da-machen",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Was kann man da machen?",
+    "text": "Was kann man da machen?\n\nDeskriptive Statistik sollte nicht zugunsten ‘fortgeschrittener’ Methoden vernachlässigt werden\nInterviews und andere Formen qualitativer Forschung sind eine unverzichtbare Ergänzung zu ‘reiner’ Statistik\nSollten Modelle Erkenntnissen aus der deskriptiven Statistik oder qualitativer Forschung widersprechen, Modellannahmen kritisch hinterfragen\n“Alle Modelle sind falsch, aber manche sind nützlich”"
+  },
+  {
+    "objectID": "presentations/Statistik/index.html#quellen",
+    "href": "presentations/Statistik/index.html#quellen",
+    "title": "Brauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?",
+    "section": "Quellen",
+    "text": "Quellen\n\n\n\n\nConley, T., & Kelly, M. (2025). The standard errors of persistence. Journal of International Economics, 153, 104027. DOI\nR Core Team. (2026). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. DOI\nWickham, H., et al. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. DOI\nAll models are wrong\n\n\n\n\n\nAuguie, B. (2026). gridExtra: Miscellaneous Functions for “Grid” Graphics (Version 2.3.1) [R package]. DOI\nBryan, J. (2025). gapminder: Data from Gapminder (Version 1.0.1) [R package]. DOI\nPedersen, T. (2025). patchwork: The Composer of Plots (Version 1.3.2) [R package]. DOI\nPruim, R. (2026). NHANES: Data from the US National Health and Nutrition Examination Study (Version 2.1.4) [R package]. DOI"
   },
   {
     "objectID": "index.html",
@@ -47,6 +159,13 @@
     "title": "Ina Krapp",
     "section": "",
     "text": "sfhoneycombs | Easily create honeycomb maps | 2026\nsfcentralities | Simply and quickly calculate central points | 2026\n\n\n\nWisp | A Graphical User Interface for the Speech-to-Text Whisper AI | 2024\nQuiz | A Graphical User Interface for a quiz, with various features such as the possibility to depict images when questions are asked, a progress bar and an exam mode where the user is informed about passing/failing depending on the percentage of answers given correctly | 2025"
+  },
+  {
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "Coding Assistants in RStudio and Visual Studio Code\n\n\n\n\n\n\n\n\n\n\nBrauchen wir ‘fortgeschrittenere’ Statistik in der Geographie?\n\n\n\nOct 1, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#what-is-ollama",
@@ -81,7 +200,7 @@
     "href": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
     "title": "Coding Assistants in RStudio and Visual Studio Code",
     "section": "RStudio - Chat with a LLM:",
-    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n``` R\nplot(diamonds, nyt = TRUE, main = “Diamonds Plot”)\n```\n\nThis command fetches the data and plot it using the `plot()` function with the \n`diamonds` data and enables the display of the \"diamonds\" data with the option \nto show \"nits\" for the data."
+    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\nYou use `plot_diamonds.ggplot2` to create a plot of the Diamonds data set. \nInstall the package using `install.packages(\"ggplot2\")` and then use \n`ggplot(diamonds)` to create a dataframe.  Finally, `ggplot(diamonds)` creates \na plot."
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
