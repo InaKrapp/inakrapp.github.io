@@ -200,7 +200,7 @@
     "href": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
     "title": "Coding Assistants in RStudio and Visual Studio Code",
     "section": "RStudio - Chat with a LLM:",
-    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n``` r\nplot(diamonds, main = \"Diamonds Plot\")\n```\n\nThis command will create a scatter plot of the diamond data."
+    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n```R\n# Install and load the diamonds dataset if you haven't already \n\nlibrary(read_clipboard) #This will take you to the website\nlibrary(ggplot2)\n\n# Simple barplot\n ggplot(diamonds, aes(x = price)) +\n  geom_bar()"
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
