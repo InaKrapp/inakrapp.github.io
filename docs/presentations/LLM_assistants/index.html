@@ -1117,10 +1117,11 @@ Ina Krapp
 <span id="cb1-3"><a></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_ollama</span>(<span class="at">model =</span> <span class="st">&quot;gemma3:1b&quot;</span>)</span>
 <span id="cb1-4"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">&quot;How can I create a plot of the diamonds dataset in R? Answer briefly.&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>You use `plot_diamonds.ggplot2` to create a plot of the Diamonds data set. 
-Install the package using `install.packages(&quot;ggplot2&quot;)` and then use 
-`ggplot(diamonds)` to create a dataframe.  Finally, `ggplot(diamonds)` creates 
-a plot.</code></pre>
+<pre><code>``` r
+plot(diamonds, main = &quot;Diamonds Plot&quot;)
+```
+
+This command will create a scatter plot of the diamond data.</code></pre>
 </div>
 </div>
 </section>
