@@ -1,0 +1,370 @@
+---
+title: "Wie findet man ein Zentrum?"
+author:
+  - name: Ina Krapp
+    email: "ina.krapp@freenet.de" # Optional, aber nett für Networking
+format: 
+  revealjs:
+    highlight-style: github
+    slide-number: true
+    # Erlaubt dem Publikum, den Code bei Bedarf aufzuklappen
+    code-fold: true 
+    code-summary: "Code anzeigen"
+    self-contained: true
+
+date: "1. October 2026"
+venue: "Geography Connect Convention, Osnabrück" # Wird oft automatisch ins Footer/Deckblatt übernommen
+date-format: "DD.MM.YYYY" 
+image: "thumbnail.png"  
+---
+
+## Das Gefühl der Zentralität
+
+- Wir alle haben eine Vorstellung eines Stadtzentrums
+- Aber **was** macht einen Ort zentral?
+
+```{r, message = FALSE, warning = FALSE}
+#| label: setup
+#| echo: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| out-width: "100%"
+
+# Pakete laden
+library(tidyverse)
+library(readxl)
+library(sf)
+library(here)
+library(ggspatial)
+library(nngeo)  # für st_connect
+
+# Paket laden von github:
+# install.packages("pak")
+pak::pak("InaKrapp/sfhoneycombs")
+pak::pak("InaKrapp/sfcentralities")
+library(sfcentralities)
+library(sfhoneycombs)
+
+# 1. Geodaten laden (Bezirksgrenzen und Berliner Mauer)
+Bezirksgrenzen <- st_read("https://github.com/InaKrapp/Workshops/raw/refs/heads/main/Zentrum/Bezirksgrenzen.gpkg", quiet = TRUE)
+Grenzmauer <- st_read("https://github.com/InaKrapp/Workshops/raw/refs/heads/main/Zentrum/Grenzmauer.gpkg", quiet = TRUE)
+
+# Die Mauer-Geometrie aufbereiten: 
+# Extraktion reiner Linien (LINESTRING) aus einer eventuell gemischten Geometrie (Compoundcurve)
+Grenzmauer <- st_cast(Grenzmauer, "GEOMETRYCOLLECTION") %>% 
+  st_collection_extract("LINESTRING")
+
+
+data_2023 = st_read("https://github.com/InaKrapp/Workshops/raw/refs/heads/main/Zentrum/IHKBerlin_Gewerbedaten_11-2023.gpkg", quiet = TRUE)
+
+# 3. Daten bereinigen: Berliner Außengrenze holen
+Berlin_Polygon <- Bezirksgrenzen %>% filter(text == "Berlin")
+
+# Berliner Außengrenze für spätere Visualisierungen als Linie (MULTILINESTRING) speichern
+Berlin <- st_cast(Berlin_Polygon, "MULTILINESTRING")
+
+
+
+# --- 1. Flächen für Ost- und Westberlin generieren ---
+
+# Mauer zu einer Linie zusammenführen
+Grenzmauer_merged <- st_line_merge(st_union(st_geometry(Grenzmauer)))
+# Alle Teilstücke einzeln verbinden (nächstgelegene Endpunkte je zwei Segmente)
+teile <- st_cast(Grenzmauer_merged, "LINESTRING") %>% st_as_sf()
+verbindungen <- nngeo::st_connect(teile, teile, k = 2, progress = FALSE) # verbindet nahegelegene Segmentenden
+
+# Endpunkte der Mauer extrahieren
+mauer_endpunkte <- st_line_sample(teile, sample = c(0, 1)) %>% 
+  st_cast("POINT")
+
+# Nächstgelegene Punkte auf der Außengrenze finden
+naechste_punkte <- st_nearest_points(mauer_endpunkte, Berlin) 
+
+alle_linien <- c(
+  st_geometry(Berlin),
+  st_geometry(teile),
+  verbindungen,
+  naechste_punkte
+) %>% st_union()
+
+# Jetzt erst polygonisieren
+teil_polygone <- st_polygonize(alle_linien) %>% 
+  st_collection_extract("POLYGON") %>% 
+  st_as_sf()
+
+teil_polygone$area <- st_area(teil_polygone)
+teil_polygone <- teil_polygone %>% arrange(desc(area)) %>% slice(1:2)
+
+mittelpunkte <- st_coordinates(st_centroid(teil_polygone))
+teil_polygone$region <- ifelse(
+  mittelpunkte[,1] == max(mittelpunkte[,1]), 
+  "Ostberlin", 
+  "Westberlin"
+)
+
+
+# --- 2. Punkte in den Flächen sampeln ---
+set.seed(42) # Sorgt dafür, dass bei jedem Rendern exakt dieselben Punkte entstehen
+
+pts_gesamt <- st_sample(Berlin_Polygon, size = 2000) %>% 
+  st_as_sf() %>% mutate(region = "Gesamtberlin")
+
+pts_west <- st_sample(filter(teil_polygone, region == "Westberlin"), size = 2000) %>% 
+  st_as_sf() %>% mutate(region = "Westberlin")
+
+pts_ost <- st_sample(filter(teil_polygone, region == "Ostberlin"), size = 2000) %>% 
+  st_as_sf() %>% mutate(region = "Ostberlin")
+
+# Alle gesampelten Punkte zu einem Datensatz zusammenfügen
+alle_punkte <- bind_rows(pts_gesamt, pts_west, pts_ost)
+
+# --- 3. Die drei Zentren berechnen ---
+Zentren_Historisch <- alle_punkte %>% 
+  st_geo_median(group = "region")
+
+# --- 4. Karte plotten ---
+ggplot() +
+  # Hintergrund: Die zwei Hälften leicht unterschiedlich einfärben
+  geom_sf(data = teil_polygone, aes(fill = region), color = NA, alpha = 0.2) +
+  
+  # Bezirksgrenzen zur Orientierung
+  geom_sf(data = Bezirksgrenzen, fill = NA, color = "#E0E0E0", linewidth = 0.3) +
+  
+  # Die Berliner Mauer einzeichnen
+  geom_sf(data = Grenzmauer, color = "black", linewidth = 0.8, linetype = "dashed") +
+  
+  # Die berechneten Zentren plotten
+  geom_sf(data = Zentren_Historisch, aes(color = name, shape = name), size = 6) +
+  
+  # Farben und Symbole anpassen
+  scale_fill_manual(values = c("Ostberlin" = "#E69F00", "Westberlin" = "#56B4E9")) +
+  scale_color_manual(values = c("Gesamtberlin" = "#009E73", "Ostberlin" = "#D55E00", "Westberlin" = "#0072B2")) +
+  scale_shape_manual(values = c("Gesamtberlin" = 15, "Ostberlin" = 17, "Westberlin" = 17)) +
+  
+  # Design
+  theme_void(base_size = 14) +
+  labs(
+    color = "Berechnetes Zentrum",
+    shape = "Berechnetes Zentrum",
+    fill = "Stadtgebiet"
+  ) +
+  theme(
+    legend.position = "right",
+    legend.title = element_text(face = "bold")
+  )
+```
+
+
+## Das Zentrum als dichter Ort - Honigwabenkarten
+
+```{r}
+#| label: honeycombs
+#| echo: true
+#| layout-ncol: 2
+#| fig-height: 8
+
+# Die Option layout-ncol: 2 sorgt dafür, dass die folgenden zwei Plots 
+# sauber nebeneinander (in 2 Spalten) angeordnet werden.
+
+# 1. Honigwaben-Karte für Branche 47 (z.B. Einzelhandel)
+pts_47 <- dplyr::filter(data_2023, branch_top_level_id == 47)
+map1 <- sfhoneycombs::st_create_honeycomb_map(Bezirksgrenzen, pts_47)
+
+# Plot 1 rendern
+ggplot() +
+  geom_sf(data = map1, aes(fill = count), color = NA) +
+  scale_fill_viridis_c(option = "viridis", direction = 1) + # Farbpalette viridis
+  theme_void(base_size = 24) +
+  labs(title = "Einzelhandel", fill = "Anzahl") +
+  theme(legend.position = "bottom")+
+  # Maßstab hinzufügen
+  annotation_scale(location = "bl", width_hint = 0.25, text_cex = 2, style = "bar") +
+      guides(fill = guide_colorbar(barwidth = unit(12, "cm"), barheight = unit(1, "cm")))
+
+
+# 2. Honigwaben-Karte für Branche 68 (z.B. Immobilienwesen)
+pts_68 <- dplyr::filter(data_2023, branch_top_level_id == 68)
+map2 <- sfhoneycombs::st_create_honeycomb_map(Bezirksgrenzen, pts_68)
+
+# Plot 2 rendern (mit Berliner Mauer als Overlay)
+ggplot() +
+  geom_sf(data = map2, aes(fill = count), color = NA) +
+  geom_sf(data = Grenzmauer, color = "cyan", linewidth = 0.8) + # Mauer hervorgehoben
+  scale_fill_viridis_c(option = "viridis", direction = 1) +
+  theme_void(base_size = 24) +
+  labs(title = "Immobilien", fill = "Anzahl") +
+  theme(legend.position = "bottom")+
+  # Maßstab hinzufügen
+  annotation_scale(location = "bl", width_hint = 0.25, text_cex = 2, style = "bar") +
+    guides(fill = guide_colorbar(barwidth = unit(12, "cm"), barheight = unit(1, "cm")))
+```
+
+## Das Zentrum als Ort geringer Entfernungen
+
+Geometrischer Median: Punkt, von dem die Summe der Distanzen zu allen Punkten einer Gruppe minimal ist
+
+```{r}
+#| label: geometric-median
+#| echo: true
+#| fig-align: center
+#| fig-width: 16      # Macht das Bild sehr breit
+#| fig-height: 4.5    # Hält das Bild in der Höhe flach
+#| out-width: "100%"  # Nutzt die volle Breite der Folie
+
+
+# Paket laden
+library(sfcentralities)
+
+# 1. Geometrische Mediane berechnen
+Berlin_Zentrum <- data_2023 %>% st_geo_median()
+Berlin_Zentren <- data_2023 %>% 
+  st_geo_median(group = "branch_top_level_desc") %>% 
+  filter(number_of_points > 18000)
+
+# 2. Dynamischen Zoom-Bereich berechnen
+zentren_grenzen <- st_bbox(Berlin_Zentren)
+
+# Nur noch einen kleinen geometrischen Puffer für die KARTE (nicht für die Legende!)
+puffer <- 500  # 500 Meter in alle Richtungen
+
+xlim <- c(zentren_grenzen["xmin"] - puffer, zentren_grenzen["xmax"] + puffer)
+ylim <- c(zentren_grenzen["ymin"] - puffer, zentren_grenzen["ymax"] + puffer)
+
+# 3. Visualisierung
+ggplot() +
+  geom_sf(data = Bezirksgrenzen, fill = "white", color = "#D3D3D3", linewidth = 0.5) +
+  
+  # Die gruppierten Branchen-Zentren
+  geom_sf(data = Berlin_Zentren, aes(color = name), size = 5, alpha = 0.8) +
+  
+  # Das absolute Hauptzentrum 
+  geom_sf(data = Berlin_Zentrum, color = "red", size = 10, shape = 18) +
+  
+  # Den berechneten Zoom anwenden
+  coord_sf(xlim = xlim, ylim = ylim, expand = FALSE) +
+  
+  # Base_size etwas erhöhen, damit die Schrift auf der Folie gut lesbar bleibt
+  theme_minimal(base_size = 24) + 
+  labs(
+    color = "Branche",
+  ) +
+  theme(
+    legend.position = "right",
+    # Entfernt überschüssige weiße Ränder um den Plot komplett:
+    plot.margin = margin(t = 2, r = 2, b = 2, l = 2), 
+    axis.text = element_text(size = 10)
+  ) +
+  guides(color = guide_legend(override.aes = list(size = 4)))+
+  scale_color_manual(values = c("deepskyblue", "purple"))
+```
+
+## Das Zentrum als vernetzter Ort
+
+```{r}
+#| label: network-centrality
+#| echo: true
+#| layout-ncol: 2
+#| fig-height: 8
+#| fig-width: 8
+
+# Daten einlesen (Closeness Centrality des Straßennetzwerks)
+center_streetnet <- st_read("https://github.com/InaKrapp/Workshops/raw/refs/heads/main/Zentrum/streetnet_center.gpkg", quiet = TRUE)
+firm_center_streetnet <- st_read("https://github.com/InaKrapp/Workshops/raw/refs/heads/main/Zentrum/firm_streetnet_center.gpkg", quiet = TRUE)
+
+
+# Funktion zur Vermeidung von Code-Duplikaten beim Plotten
+# Da beide Plots fast identisch formatiert sind, definieren wir das Theme einmalig
+plot_network <- function(network_data, title) {
+  ggplot()+
+    
+    # Straßennetzwerk basierend auf Zentralität (Closeness) einfärben
+    geom_sf(data = network_data, aes(color = closeness), size = 0.5) +
+    
+    # Grenzen einfügen
+    geom_sf(data = Berlin, aes(linetype = "Stadtgrenze"), color = "darkgrey", fill = NA, linewidth = 1) +
+    geom_sf(data = Grenzmauer, aes(linetype = "Berliner Mauer"), color = "black", linewidth = 1) +
+    
+    # Maßstab hinzufügen
+    annotation_scale(location = "bl", width_hint = 0.25, text_cex = 0.7, style = "bar") +
+    
+    # Farben und Legenden anpassen
+    scale_linetype_manual(values = c("Berliner Mauer" = "solid", "Stadtgrenze" = "solid")) +
+    scale_color_viridis_c(option = "inferno") + # Gute Sichtbarkeit
+    labs(title = title, color = "Norm. Closeness", linetype = "Grenze") +
+    
+    # Design anpassen
+    theme_bw(base_size = 20) +
+    theme(
+      panel.background = element_rect(fill = "aliceblue", color = NA),
+      panel.grid = element_blank(),
+      axis.title = element_blank(),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      legend.position = "bottom",
+      legend.direction = "horizontal",
+      legend.box = "vertical",
+      plot.title = element_text(size = 30, face = "bold", hjust = 0.5)
+    ) +
+    guides(color = guide_colorbar(barwidth = unit(12, "cm"), barheight = unit(1, "cm")))
+}
+
+# Beide Plots aufrufen (werden durch layout-ncol: 2 nebeneinander dargestellt)
+plot_network(center_streetnet, "Alle Straßen (Zentralität)")
+plot_network(firm_center_streetnet, "Gewerbeschwerpunkte")
+```
+
+
+## Referenzen & Daten
+
+::: {.columns}
+::: {.column}
+
+
+<div style="font-size: 0.5em; line-height: 1.2;">
+
+-   **R Core Team.** (2026). *R: A Language and Environment for Statistical Computing*. R Foundation for Statistical Computing. [DOI](https://doi.org/10.32614/R.manuals)
+
+### R-Pakete:
+
+-   **Wickham, H., et al.** (2019). Welcome to the tidyverse. *Journal of Open Source Software*, *4*(43), 1686. [DOI](https://doi.org/10.21105/joss.01686)
+
+-   **Dunnington, D.** (2025). *ggspatial: Spatial Data Framework for ggplot2*. Version 1.1.10. CRAN. [DOI](https://doi.org/10.32614/CRAN.package.ggspatial)
+
+-   **Dorman, M.** (2024). *nngeo: k-Nearest Neighbor Join for Spatial Data*. Version 0.4.8. CRAN. [DOI](https://doi.org/10.32614/CRAN.package.nngeo)
+
+-   **Mark, P.** (2019). *dodgr: An R Package for Network Flow Aggregation*. *Transport Findings*, *2*(14). [DOI](https://doi.org/10.32866/6945)
+
+-   **Müller, K.** (2025). *here: A Simpler Way to Find Your Files*. Version 1.0.2. CRAN. [DOI](https://doi.org/10.32614/CRAN.package.here)
+
+-   **Krapp, I.** (2026). *sfcentralities: Centrality Measures for sf Objects*. Version 0.1.0. GitHub. [URL](https://github.com/InaKrapp/sfcentralities)
+
+-   **Krapp, I.** (2026). *sfhoneycombs: Create Honeycomb Maps Easily and Automatically from sf Objects*. Version 0.1.0. GitHub. [URL](https://github.com/InaKrapp/sfhoneycombs)
+
+
+</div>
+:::
+
+::: {.column}
+<div style="font-size: 0.5em; line-height: 1.2;">
+
+
+
+-   **Pebesma, E., & Bivand, R.** (2023). *Spatial Data Science: With Applications in R*. Chapman and Hall/CRC. [DOI](https://doi.org/10.1201/9780429459016)
+
+-   **Pebesma, E.** (2018). Simple features for R: Standardized support for spatial vector data. *The R Journal*, *10*(1), 439–446. [DOI](https://doi.org/10.32614/RJ-2018-009)
+
+### Daten:
+
+-   **Forum für Geschichte und Gegenwart e.V., Bauen und Wohnen Berlin, & Senatsverwaltung für Stadtentwicklung.** (2007). *Verlauf Der Berliner Mauer, 1989*. https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/3dcda64c-432d-3ac1-b28c-0b2f951bd242
+
+-   **Industrie- und Handelskammer (IHK) Berlin.** (2023). *Open Data - Gewerbedaten Berlin*. IHK Berlin. https://cloud.ihk.berlin/d/62fad06b540745098ab7/
+
+-   **Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen Berlin.** (2025). *Verwaltungseinheiten Im INSPIRE-Datenmodell*. https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/1cc18674-2a0c-36e3-aba3-f34a54c0d844
+
+</div>
+:::
+:::
+
+
+

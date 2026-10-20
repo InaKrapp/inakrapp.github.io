@@ -13,7 +13,7 @@ website:
       - text: "Presentations"
         href: presentations.qmd
       - text: "Blog"
-        href: posts
+        href: blog
 
 format:
   html:

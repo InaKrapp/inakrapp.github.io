@@ -5,7 +5,11 @@ git add docs
 git commit -m "Publish site to docs/"
 git push
 
+To add a preview to a presentation, make sure the yaml header of the index.qmd contains:
+image: "thumbnail.png" 
+and an image named thumbnail.png is in the same directory.
+Also, the image has to be roughly 1280 to 720 or parts of it will get cut off.
 
 https://orcid.org/0009-0009-5880-1779
 
-CV und Orchid ergänzen
+Orchid ergänzen

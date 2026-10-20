@@ -5,21 +5,22 @@ about:
   template: trestles
   links:
     #- text: LinkedIn
-    #  url: "https://linkedin.com/in/mikemahoney218"
+    #  url: "https://linkedin.com/in/username"
     #- text: 🦋 Bluesky
-    #  url: "https://bsky.app/profile/mikemahoney218.com"
+    #  url: "https://bsky.app/profile/username.com"
     #- text: Mastodon
     #  icon: mastodon
-    #  url: "https://fosstodon.org/@MikeMahoney218"
+    #  url: "https://fosstodon.org/@username"
     - text: GitHub
       icon: github
       url: "https://github.com/InaKrapp"
     - text: Email
-      url: "mailto:ina.krapp@dwd.de"
+      url: "mailto:ina.krapp@freenet.de"
     - text: Blog
-      url: "blog.html"
+      icon: pencil  
+      url: "blog/index.qmd"
     - text: CV
-      url: "cv.pdf"
+      url: "CV_2026.pdf"
 comments: false
 ---
 ::: {.column-page}
@@ -31,7 +32,7 @@ I am Ina Krapp, a Technical Employee working for the German Weather Service. My 
 By training I'm a geographer and quantitative economist, but I've learnt several programming languages along the way and program all the time.
 
 On this site I keep a list of [my publications](papers), [presentations](presentations), 
-and [my CV](cv.pdf), as well as a [blog](posts).
+and [my CV](CV_2026.pdf), as well as a [blog](blog).
 
 <p></p>
 
@@ -43,6 +44,11 @@ and [my CV](cv.pdf), as well as a [blog](posts).
 
 **[sfcentralities](https://github.com/InaKrapp/sfcentralities)** | Simply and quickly calculate central points | 2026 
 
+#### Python Projects
+
+**[Wisp](https://github.com/InaKrapp/whisper-locally-running)** | A Graphical User Interface for the Speech-to-Text Whisper AI | 2024
+
+**[Quiz](https://github.com/InaKrapp/Quiz)** | A Graphical User Interface for a quiz, with various features such as the possibility to depict images when questions are asked, a progress bar and an exam mode where the user is informed about passing/failing depending on the percentage of answers given correctly | 2025
 
 :::
 

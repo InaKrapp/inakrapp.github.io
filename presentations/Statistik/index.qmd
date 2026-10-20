@@ -1,0 +1,436 @@
+---
+title: "Brauchen wir 'fortgeschrittenere' Statistik in der Geographie?"
+author:
+  - name: Ina Krapp
+    email: "ina.krapp@freenet.de" # Optional, aber nett für Networking
+date: "1. October 2026"
+venue: "Geography Connect Convention, Osnabrück" # Wird oft automatisch ins Footer/Deckblatt übernommen
+date-format: "DD.MM.YYYY" 
+format:
+  revealjs:
+    theme: simple
+    self-contained: true
+image: "thumbnail.png"     
+---
+
+## Was ist Statistik?
+
+-   Deskriptive Statistik: Zusammenfassung, Visualisierung
+-   Das Versprechen: Aussagen über X, Y und ihre Gemeinsamkeiten und Unterschiede
+-   Inferenzstatistik: Modellierung von Zusammenhängen, Vorhersage
+-   Das Versprechen: Anhand von Zahlen beweisen, dass $X \rightarrow Y$gilt
+
+## Das Paradox der Regression
+
+-   Lineare Regression modelliert den Zusammenhang zwischen Variablen X und Y
+-   Voraussetzung: Es muss ein linearer Zusammenhang der Form $X \rightarrow Y$ bestehen
+-   Heißt das, man kann sie nur anwenden, wenn man den Zusammenhang vorher schon kennt? Braucht man sie dann noch?
+-   Regression trifft auch Aussagen über Stärke und Richtung des Zusammenhanges
+-   Aber: Sie erfordert sehr viele Annahmen
+
+## Das Annahmenproblem
+
+-   Je 'fortgeschrittener' eine statistische Methode ist, desto mehr Annahmen braucht sie in der Regel:
+-   Median, Mittelwert und Standardabweichung: (Fast) keine Annahmen
+-   Lineare Regression: Erfordert Annahmen über Richtung ($X \rightarrow Y$), lineare Form des Zusammenhanges und Unabhängigkeit von weiteren Einflüssen
+-   Viele dieser Annahmen lassen sich selten oder gar nicht testen, die Unabhängigkeit von weiteren Einflüssen ist fast nie erfüllt
+
+## Wie häufig ist die Normalverteilung?
+
+Für das Berechnen von p-Werten wurde oft davon ausgegangen, dass Werte normalverteilt sind. Aber nicht normalverteilt sind bspw.
+
+-   das Handelsvolumen zwischen Staaten,
+-   das Einkommen und das Vermögen einer Bevölkerung
+-   das Körpergewicht und die Körpergröße,
+-   oder auch sämtliche binäre Variablen (Ja-Nein-Antworten)
+
+## Wie häufig ist die Normalverteilung?
+
+```{r}
+# Installiere die Pakete, falls du sie noch nicht hast:
+# install.packages(c("tidyverse", "patchwork", "NHANES", "gapminder", "gridExtra"))
+
+library(tidyverse)
+library(patchwork)
+library(NHANES)
+library(gapminder)
+library(gridExtra)
+
+# ---------------------------------------------------------
+# 1. Einkommen (Proxy: BIP pro Kopf, Gapminder 2007)
+# ---------------------------------------------------------
+data_income <- gapminder %>% filter(year == 2007)
+mean_inc <- mean(data_income$gdpPercap)
+sd_inc <- sd(data_income$gdpPercap)
+
+p1 <- ggplot(data_income, aes(x = gdpPercap)) +
+  geom_density(fill = "skyblue", alpha = 0.6, color = "darkblue") +
+  stat_function(fun = dnorm, args = list(mean = mean_inc, sd = sd_inc), 
+                color = "red", linetype = "dashed", linewidth = 1) +
+  labs(title = "A) Einkommen (BIP pro Kopf)",
+       x = "BIP pro Kopf (USD)", y = "Dichte") +
+  theme_minimal()
+
+# ---------------------------------------------------------
+# 2. Körpergewicht (Erwachsene, NHANES)
+# ---------------------------------------------------------
+# Wir filtern auf Erwachsene, um Wachstumsphasen auszuschließen
+data_weight <- NHANES %>% filter(Age >= 20) %>% drop_na(Weight)
+mean_wt <- mean(data_weight$Weight)
+sd_wt <- sd(data_weight$Weight)
+
+p2 <- ggplot(data_weight, aes(x = Weight)) +
+  geom_density(fill = "lightgreen", alpha = 0.6, color = "darkgreen") +
+  stat_function(fun = dnorm, args = list(mean = mean_wt, sd = sd_wt), 
+                color = "red", linetype = "dashed", linewidth = 1) +
+  labs(title = "B) Körpergewicht",
+       x = "Gewicht (kg)", y = "Dichte") +
+  theme_minimal()
+
+# ---------------------------------------------------------
+# 3. Binäre Variable (Diabetes Ja/Nein, NHANES)
+# ---------------------------------------------------------
+# Wir werfen NAs raus und codieren Yes=1 und No=0
+data_bin <- NHANES %>% 
+  drop_na(Diabetes) %>% 
+  mutate(Diabetes_num = ifelse(Diabetes == "Yes", 1, 0))
+
+mean_bin <- mean(data_bin$Diabetes_num)
+sd_bin <- sd(data_bin$Diabetes_num)
+
+p3 <- ggplot(data_bin, aes(x = Diabetes_num)) +
+  # Ein Histogramm mit Dichte (after_stat(density)), damit die rote Kurve passt.
+  # Wir zwingen die Balken genau auf die 0 und die 1.
+  geom_histogram(aes(y = after_stat(density)), 
+                 breaks = c(-0.2, 0.2, 0.8, 1.2), 
+                 fill = "salmon", alpha = 0.8, color = "darkred") +
+  stat_function(fun = dnorm, args = list(mean = mean_bin, sd = sd_bin), 
+                color = "red", linetype = "dashed", linewidth = 1) +
+  # Wir zeigen einen breiteren x-Bereich, um zu zeigen, dass die Kurve über das Ziel hinausschießt
+  coord_cartesian(xlim = c(-1, 2)) +
+  scale_x_continuous(breaks = c(0, 1), labels = c("0 (Nein)", "1 (Ja)")) +
+  labs(title = "C) Binäre Variable (0 und 1)",
+       x = "Diagnose (numerisch)", y = "Dichte") +
+  theme_minimal()
+
+# ---------------------------------------------------------
+# 4. Körpergröße (Erwachsene Frauen, NHANES)
+# ---------------------------------------------------------
+# Eine Mischung aus Männern und Frauen gibt eine zweigipflige (bimodale) Verteilung, wenn man Kinder nicht einhschließt.
+data_height <- NHANES %>% drop_na(Height)%>% filter(Age >= 20)#, Gender == "female") 
+mean_ht <- mean(data_height$Height)
+sd_ht <- sd(data_height$Height)
+
+p4 <- ggplot(data_height, aes(x = Height)) +
+  geom_density(fill = "gold", alpha = 0.6, color = "darkorange") +
+  stat_function(fun = dnorm, args = list(mean = mean_ht, sd = sd_ht), 
+                color = "red", linetype = "dashed", linewidth = 1) +
+  labs(title = "D) Körpergröße",
+       x = "Größe (cm)", y = "Dichte") +
+  theme_minimal()
+
+# ---------------------------------------------------------
+# Plots zusammenfügen (dank 'patchwork')
+# ---------------------------------------------------------
+final_plot <- (p1 | p2) / (p3 | p4) +
+  plot_annotation(
+    title = 'Vergleich echter Daten mit der theoretischen Normalverteilung',
+    theme = theme(plot.title = element_text(size = 16, face = "bold"))
+  )
+
+# Plot anzeigen
+print(final_plot)
+```
+
+## Das Problem mit der Autokorrelation
+
+-   Die Lösung: Robuste Standardfehler
+-   Das nächste Problem: Diese erfassen keine räumliche oder zeitliche Autokorrelation...
+-   Regressionen räumlicher Daten in einfachen linearen Regressionen sind fast immer signifikant - selbst wenn die Variablen zufällig generiert sind!
+
+## Nähere Orte haben mehr miteinander gemeinsam
+
+Dieser Effekt tritt immer dann auf, wenn näher beieinander liegende Orte sich ähneln.
+
+Ein Beispiel lässt sich folgendermaßen simulieren
+
+1.  Ich generiere 5 zufällige Zentren
+2.  Ich gebe 500 zufällig im Raum verteilten Punkten Werte, die von der Entfernung zu den Zentren abhängen
+
+## Die Simulation
+
+```{r}
+
+set.seed(10) # set.seed(1) gibt einen nicht-signifikanten Wert, 2,3,4,6,7 einen negativen, 5, 8, 9, 10 einen positiven
+# Für die Signifikanz in Seed 3 kann durch die Region-Koeffizienten kontrolliert werden
+# 1. Parameter
+n_points <- 500
+n_clusters <- 5
+
+coords <- data.frame(
+  lon = runif(n_points, 0, 100),
+  lat = runif(n_points, 0, 100)
+)
+
+# Modifizierte Funktion, die auch die Zentren zurückgibt
+generate_spatial_data_with_centers <- function(coords, n_clusters) {
+  centers <- data.frame(
+    lon = runif(n_clusters, 0, 100),
+    lat = runif(n_clusters, 0, 100),
+    val = rnorm(n_clusters, mean = 50, sd = 10)
+  )
+  
+  values <- numeric(nrow(coords))
+  for (i in 1:nrow(coords)) {
+    dist <- sqrt((coords$lon[i] - centers$lon)^2 + (coords$lat[i] - centers$lat)^2)
+    values[i] <- sum(centers$val * exp(-dist/15)) + rnorm(1, 0, 2)
+  }
+  return(list(values = values, centers = centers))
+}
+
+# Zwei unabhängige räumliche Variablen generieren
+res_x <- generate_spatial_data_with_centers(coords, n_clusters)
+res_y <- generate_spatial_data_with_centers(coords, n_clusters)
+
+coords$X <- res_x$values
+coords$Y <- res_y$values
+
+# --- VISUALISIERUNG MIT GGPLOT2 ---
+
+# Plot für X
+p1 <- ggplot(coords, aes(lon, lat, color = X)) +
+  geom_point(alpha = 0.6) +
+  geom_point(data = res_x$centers, aes(lon, lat), color = "black", fill ="darkgoldenrod1", size = 6, shape = 23) +
+  scale_color_viridis_c() +
+  labs(title = "Variable X & Zentren", subtitle = "Sterne = Cluster-Zentren") +
+  theme_minimal()+labs(x = "Längengrad", y = "Breitengrad")
+
+# Plot für Y
+p2 <- ggplot(coords, aes(lon, lat, color = Y)) +
+  geom_point(alpha = 0.6) +
+  geom_point(data = res_y$centers, aes(lon, lat), color = "black", fill ="darkgoldenrod1",  size = 6, shape = 23) +
+  scale_color_viridis_c() +
+  labs(title = "Variable Y & Zentren", subtitle = "Sterne = Cluster-Zentren") +
+  theme_minimal()+labs(x = "Längengrad", y = "Breitengrad")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+## Nähere Orte haben mehr miteinander gemeinsam
+
+-   Da es ein Zufallsprozess ist, sind X und Y unabhängig voneinander
+-   Dennoch ist der statistische Zusammenhang zwischen ihnen in einem linearen Modell fast immer signifkant
+-   Der Koeffizient kann positiv oder negativ sein
+
+## Die künstliche Signifikanz
+
+```{r}
+model <- lm(Y ~ X, data = coords)
+sum_mod <- summary(model)
+
+# Extraktion der OLS-Werte
+coef_ols <- sum_mod$coefficients[2, 1]
+se_ols   <- sum_mod$coefficients[2, 2]
+
+# t-Statistik "von Hand" berechnen
+# t = Koeffizient / Standardfehler
+t_ols    <- coef_ols / se_ols
+
+# p-Wert "von Hand" berechnen
+# Wir nutzen die t-Verteilung mit n-2 Freiheitsgraden (für einfache lineare Regression)
+p_ols    <- 2 * pt(abs(t_ols), df = n_points - 2, lower.tail = FALSE)
+
+
+# Berechnung der korrigierten Werte
+# Wir nutzen die Formel: SE_true = SE_ols * sqrt(n / k)
+se_true <- se_ols * sqrt(n_points / n_clusters)
+t_true  <- coef_ols / se_true
+# p-Wert für die korrigierte t-Statistik berechnen (mit k-1 Freiheitsgraden)
+p_true  <- 2 * pt(abs(t_true), df = n_clusters - 1, lower.tail = FALSE)
+
+# --- AUSGABE ---
+cat("\n==========================================================\n")
+cat("SIMULATION: Räumliche Autokorrelation vs. Unabhängigkeit\n")
+cat("==========================================================\n")
+cat(sprintf("Nominale Stichprobe (n): %d | Effektive Cluster (k): %d\n", n_points, n_clusters))
+cat(sprintf("Koeffizient (Richtung des Zusammenhangs): %.4f\n", coef_ols))
+cat("----------------------------------------------------------\n")
+cat(sprintf("%-20s %-12s %-12s %-12s %-12s\n", "Modell", "Koeff.", "Std.Error", "t-Stat", "p-Wert"))
+cat(sprintf("%-20s %-12.4f %-12.4f %-12.4f %-12.4f\n", "OLS (falsch)", coef_ols, se_ols, t_ols, p_ols))
+cat(sprintf("%-20s %-12.4f %-12.4f %-12.4f %-12.4f\n", "Korrigiert", coef_ols, se_true, t_true, p_true))
+cat("----------------------------------------------------------\n")
+
+if(p_ols < 0.05 && p_true > 0.05) {
+  cat("ERGEBNIS: OLS meldet fälschlicherweise Signifikanz (Typ-I-Fehler)!\n")
+} else if (p_ols > 0.05) {
+  cat("ERGEBNIS: In diesem Durchgang war der Zufall nicht 'signifikant'.\n")
+} else {
+  cat("ERGEBNIS: Beide Modelle sehen einen Zusammenhang.\n")
+}
+cat("==========================================================\n")
+
+
+```
+
+## Das wirkliche Problem: Die Stichprobengröße
+
+-   In linearer Regression wird Signifikanz anhand der Zahl der voneinander unabhängigen Beobachtungen berechnet
+-   Im Beispiel wurde sie zunächst an 500 Beobachtungen berechnet - unabhängig voneinander waren aber nur 5
+-   Gerade im geographischem Kontext ist fraglich, ob es voneinander unabhängige Beobachtungen gibt
+
+## Länder als Kontrollvariablen?
+
+-   Räumliche oder zeitliche Einheiten (Länder, Jahre) als erklärende Variablen sind oft sehr gut darin, einen hohen Prozentsatz der Daten zu 'erklären'
+-   Kausale Zusammenhänge werden durch sie aber eher verborgen als gefunden
+-   Sie sind leicht für politische Zwecke manipulierbar, da Räume beliebig zugeschnitten werden können
+-   Zum Finden der 'richtigen' Räume bräuchte man Einsicht in den realen Datengenerierungsprozess...und hätte man diese, bräuchte man die Statistik nicht mehr...
+
+## Länder als Kontrollvariablen?
+
+```{r}
+# ---------------------------------------------------------
+# 2. NEUE ANALYSE: AUFTEILUNG IN 64 QUADRATISCHE BOXEN
+# ---------------------------------------------------------
+# Wir teilen den Raum (0-100) in ein 8x8 Grid auf.
+# Jede Box ist 12.5x12.5 Einheiten groß.
+
+coords$box_col <- ceiling(coords$lon / 13)  # Spalten 1 bis 8 
+coords$box_row <- ceiling(coords$lat / 13)  # Zeilen 1 bis 8
+coords$box_id <- paste(coords$box_row, coords$box_col, sep = "_")
+
+# Aggregation: Wir berechnen den Mittelwert von X und Y für jede Box.
+# Das sind unsere neuen "unabhängigen" Beobachtungen (n=64 statt n=500).
+box_data <- aggregate(
+  cbind(X, Y) ~ box_id, 
+  data = coords, 
+  FUN = mean
+)
+
+# Optional: Wir behalten nur Boxen bei, die mindestens 1 Punkt haben (sollten alle 64 sein)
+box_data <- box_data[box_data$box_id %in% unique(coords$box_id), ]
+
+
+# ---------------------------------------------------------
+#  VISUALISIERUNG
+# ---------------------------------------------------------
+
+# Plot 1: Punkte mit eingezeichnetem 4x4 Grid
+# Wir zeichnen die Ränder des Grids
+grid_lines <- data.frame(
+  x = c(0, 25, 50, 75, 100),
+  y = c(0, 25, 50, 75, 100)
+)
+
+p1 <- ggplot(coords, aes(lon, lat, color = X)) +
+  geom_point(alpha = 0.5, size = 1) +
+  # Vertikale und horizontale Linien für das 4x4 Grid
+  geom_vline(xintercept = c(25, 50, 75), color = "grey70", linewidth = 0.5) +
+  geom_hline(yintercept = c(25, 50, 75), color = "grey70", linewidth = 0.5) +
+  scale_color_viridis_c() +
+  labs(title = "500 Punkte & 8x8 Grid", subtitle = "Visuelle Aufteilung in 64 'Regionen'") +
+  theme_minimal()+labs(x = "Längengrad", y = "Breitengrad")
+
+# Plot 2: Die 64 Boxen-Mittelwerte (die eigentliche Basis für die 2. Regression)
+# Wir berechnen die Mittelpunkte der Boxen, um sie als Punkte zu zeichnen
+box_centers <- box_data %>%
+  mutate(
+    row_num = as.numeric(sub("_.*", "", box_id)),
+    col_num = as.numeric(sub(".*_", "", box_id)),
+    # Mittelpunkt berechnen: (Index-0.5) * Boxgröße (25)
+    lon_center = (col_num - 0.5) * 25,
+    lat_center = (row_num - 0.5) * 25
+  )
+
+p2 <- ggplot(box_centers, aes(lon_center, lat_center, fill = X)) +
+  geom_tile(color = "white") +
+  scale_fill_viridis_c() +
+  labs(title = "Die 64 Regionen mit Mittelwerten", subtitle = "Basis für die modifizierte Regression (n=64)") +
+  theme_minimal()+labs(x = "Längengrad", y = "Breitengrad")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+## Länder als Kontrollvariablen?
+
+```{r}
+# ---------------------------------------------------------
+# 3. STATISTISCHE BERECHNUNG (Vergleich OLS vs. Boxen)
+# ---------------------------------------------------------
+
+# A) Naives OLS auf den 500 Punkten (Die "Falle")
+model_ols <- lm(Y ~ X, data = coords)
+sum_ols <- summary(model_ols)
+coef_ols <- sum_ols$coefficients[2, 1]
+se_ols   <- sum_ols$coefficients[2, 2]
+t_ols    <- coef_ols / se_ols
+p_ols    <- 2 * pt(abs(t_ols), df = n_points - 2, lower.tail = FALSE)
+
+# B) Regression auf den 64 Boxen-Mittelwerten (Die "Korrektur" durch Aggregation)
+# Hier haben wir nur n=64 unabhängige Einheiten.
+model_box <- lm(Y ~ X, data = box_data)
+sum_box <- summary(model_box)
+coef_box <- sum_box$coefficients[2, 1]
+se_box   <- sum_box$coefficients[2, 2]
+t_box    <- coef_box / se_box
+p_box    <- 2 * pt(abs(t_box), df = nrow(box_data) - 2, lower.tail = FALSE) # df = 64 - 2 = 14
+
+# ---------------------------------------------------------
+# 5. AUSGABE (Gleiche Struktur wie deine Folie vorher)
+# ---------------------------------------------------------
+
+cat("\n==========================================================\n")
+cat("SIMULATION: Räumliche Autokorrelation (64 Boxen)\n")
+cat("==========================================================\n")
+cat(sprintf("Nominale Stichprobe (n): %d | Effektive Boxen (k): %d\n", n_points, nrow(box_data)))
+cat(sprintf("Koeffizient (Richtung des Zusammenhangs): ~%.4f (naiv) vs ~%.4f (Boxen)\n", coef_ols, coef_box))
+cat("----------------------------------------------------------\n")
+cat(sprintf("%-20s %-12s %-12s %-12s %-12s\n", "Modell", "Koeff.", "Std.Error", "t-Stat", "p-Wert"))
+cat(sprintf("%-20s %-12.4f %-12.4f %-12.4f %-12.4f\n", "OLS (n=500)", coef_ols, se_ols, t_ols, p_ols))
+cat(sprintf("%-20s %-12.4f %-12.4f %-12.4f %-12.4f\n", "Boxen (n=64)", coef_box, se_box, t_box, p_box))
+cat("----------------------------------------------------------\n")
+
+if(p_ols < 0.05 && p_box > 0.05) {
+  cat("ERGEBNIS: OLS meldet fälschlicherweise Signifikanz (Typ-I-Fehler)!\n")
+  cat("Begründung: Die 500 Punkte sind nicht unabhängig. Es gibt nur 64 'Regionen'.\n")
+} else if (p_ols > 0.05) {
+  cat("ERGEBNIS: In diesem Durchgang war der Zufall nicht 'signifikant'.\n")
+} else {
+  cat("ERGEBNIS: Beide Modelle sehen auf dem 5%-Niveau einen Zusammenhang.\n")
+}
+cat("==========================================================\n")
+```
+
+## Ausblick:
+
+-   Da immer mehr geographisch kleinräumige Daten auch in anderen Wissenschaften (VWL, Soziologie, Politikwissenschaften) verwendet werden, wird das Problem auch dort präsenter
+-   Gleichzeitig sind nicht-räumliche Daten (in denen räumliche Zusammenhänge 'versteckt' sind) auch keine Lösung
+-   Auch andere (nichtlineare) Modelle haben nicht-widerlegbare Annahmen
+
+## Was kann man da machen?
+
+-   Deskriptive Statistik sollte nicht zugunsten 'fortgeschrittener' Methoden vernachlässigt werden
+-   Interviews und andere Formen qualitativer Forschung sind eine unverzichtbare Ergänzung zu 'reiner' Statistik
+-   Sollten Modelle Erkenntnissen aus der deskriptiven Statistik oder qualitativer Forschung widersprechen, Modellannahmen kritisch hinterfragen
+-   "Alle Modelle sind falsch, aber manche sind nützlich"
+
+## Quellen
+
+::::::: columns
+:::: column
+::: {style="font-size: 0.8em; line-height: 1.2;"}
+-   **Conley, T., & Kelly, M.** (2025). The standard errors of persistence. *Journal of International Economics*, *153*, 104027. [DOI](https://doi.org/10.1016/j.jinteco.2024.104027)
+-   **R Core Team.** (2026). *R: A Language and Environment for Statistical Computing*. R Foundation for Statistical Computing. [DOI](https://doi.org/10.32614/R.manuals)
+-   **Wickham, H., et al.** (2019). Welcome to the tidyverse. *Journal of Open Source Software*, *4*(43), 1686. [DOI](https://doi.org/10.21105/joss.01686)
+-   [All models are wrong](https://en.wikipedia.org/wiki/All_models_are_wrong)
+:::
+::::
+
+:::: column
+::: {style="font-size: 0.8em; line-height: 1.2;"}
+-   **Auguie, B.** (2026). *gridExtra: Miscellaneous Functions for "Grid" Graphics* (Version 2.3.1) \[R package\]. [DOI](https://doi.org/10.32614/CRAN.package.gridExtra)
+-   **Bryan, J.** (2025). *gapminder: Data from Gapminder* (Version 1.0.1) \[R package\]. [DOI](https://doi.org/10.32614/CRAN.package.gapminder)
+-   **Pedersen, T.** (2025). *patchwork: The Composer of Plots* (Version 1.3.2) \[R package\]. [DOI](https://doi.org/10.32614/CRAN.package.patchwork)
+-   **Pruim, R.** (2026). *NHANES: Data from the US National Health and Nutrition Examination Study* (Version 2.1.4) \[R package\]. [DOI](https://doi.org/10.32614/CRAN.package.NHANES)
+:::
+::::
+:::::::
