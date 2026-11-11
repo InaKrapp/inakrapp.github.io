@@ -6,37 +6,37 @@ page-layout: full
 <p>Meine Vorträge in voller Länge. (Zurzeit auf Englisch.)</p>
 
 <div class="row">
-  <div class="col-md-4">
-    <div class="card">
-      <a href="../../presentations/Statistik/index.html">
-        <img src="../../presentations/Statistik/thumbnail.png" class="card-img-top" alt="Vortrags-Titelbild">
-      </a>
-      <div class="card-body">
-        <h3 class="card-title"><a href="../../presentations/Statistik/index.html">Brauchen wir „fortgeschrittenere" Statistik in der Geographie?</a></h3>
-        <p class="card-text">Ina Krapp · 1. Oktober 2026 · Geography Connect Convention, Osnabrück</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <a href="../../presentations/Zentrum/index.html">
-        <img src="../../presentations/Zentrum/thumbnail.png" class="card-img-top" alt="Vortrags-Titelbild">
-      </a>
-      <div class="card-body">
-        <h3 class="card-title"><a href="../../presentations/Zentrum/index.html">Wie findet man ein Zentrum?</a></h3>
-        <p class="card-text">Ina Krapp</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <a href="../../presentations/LLM_assistants/index.html">
-        <img src="../../presentations/LLM_assistants/thumbnail.png" class="card-img-top" alt="Vortrags-Titelbild">
-      </a>
-      <div class="card-body">
-        <h3 class="card-title"><a href="../../presentations/LLM_assistants/index.html">Coding Assistants in RStudio and Visual Studio Code</a></h3>
-        <p class="card-text">Ina Krapp</p>
-      </div>
-    </div>
-  </div>
+<div class="col-md-4">
+<div class="card">
+<a href="../../presentations/Statistik/index.html">
+<img src="../../presentations/Statistik/thumbnail.png" class="card-img-top" alt="Vortrags-Titelbild">
+</a>
+<div class="card-body">
+<h3 class="card-title"><a href="../../presentations/Statistik/index.html">Brauchen wir „fortgeschrittenere" Statistik in der Geographie?</a></h3>
+<p class="card-text">Ina Krapp · 1. Oktober 2026 · Geography Connect Convention, Osnabrück</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<a href="../../presentations/Zentrum/index.html">
+<img src="../../presentations/Zentrum/thumbnail.png" class="card-img-top" alt="Vortrags-Titelbild">
+</a>
+<div class="card-body">
+<h3 class="card-title"><a href="../../presentations/Zentrum/index.html">Wie findet man ein Zentrum?</a></h3>
+<p class="card-text">Ina Krapp</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<a href="../../presentations/LLM_assistants/index.html">
+<img src="../../presentations/LLM_assistants/thumbnail.png" class="card-img-top" alt="Vortrags-Titelbild">
+</a>
+<div class="card-body">
+<h3 class="card-title"><a href="../../presentations/LLM_assistants/index.html">Coding Assistants in RStudio and Visual Studio Code</a></h3>
+<p class="card-text">Ina Krapp</p>
+</div>
+</div>
+</div>
 </div>

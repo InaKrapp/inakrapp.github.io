@@ -53,7 +53,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nsfcentralities: Calculating centralities from sf objects\n\n\n\n\n\n\n\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\nWisp: A locally running version of Whisper\n\n\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\n\n\n\n\n\nAn ARIMA model of the global average temperature\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nsfcentralities: Calculating centralities from sf objects\n\n\n\n\n\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\nWisp: A locally running version of Whisper\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\n\n\n\n\n\nAn ARIMA model of the global average temperature\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#what-is-ollama",
@@ -88,7 +88,7 @@
     "href": "presentations/LLM_assistants/index.html#rstudio---chat-with-a-llm",
     "title": "Coding Assistants in RStudio and Visual Studio Code",
     "section": "RStudio - Chat with a LLM:",
-    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n```R\nplot(diamonds, factor = \"TRUE\", main = \"Diamond Dataset Plot\", xlab = \"Depth\", \nylab = \"Price\")\n```\n\nThis code creates a scatter plot of the diamond dataset with depth as the \nx-axis and price as the y-axis, labeling the axes."
+    "text": "RStudio - Chat with a LLM:\nFirst, install the ellmer package and start a chat in it:\n\n#install.packages(\"ellmer\")\nlibrary(\"ellmer\") \nchat &lt;- chat_ollama(model = \"gemma3:1b\")\nchat$chat(\"How can I create a plot of the diamonds dataset in R? Answer briefly.\")\n\n```R\n# Load the diamonds dataset\ndata(diamonds)\n\n# Create a simple plot (e.g., scatter plot)\nplot(diamonds$price, fiancv=2) # fiancv=2 for a nicer plot\n```\n\nThis code loads the `diamonds` dataset and creates a scatter plot of `price` \nversus `price` (which is the most common use case).  You can customize the plot\nwith other data and options using `plot()` and other functions."
   },
   {
     "objectID": "presentations/LLM_assistants/index.html#rstudio---let-a-llm-add-code-to-r-files",
@@ -368,14 +368,14 @@
     "href": "de/presentations/index.html",
     "title": "Vorträge",
     "section": "",
-    "text": "Meine Vorträge in voller Länge. (Zurzeit auf Englisch.)\n\n\n\n&lt;div class=\"card\"&gt;\n  &lt;a href=\"../../presentations/Statistik/index.html\"&gt;\n    &lt;img src=\"../../presentations/Statistik/thumbnail.png\" class=\"card-img-top\" alt=\"Vortrags-Titelbild\"&gt;\n  &lt;/a&gt;\n  &lt;div class=\"card-body\"&gt;\n    &lt;h3 class=\"card-title\"&gt;&lt;a href=\"../../presentations/Statistik/index.html\"&gt;Brauchen wir „fortgeschrittenere\" Statistik in der Geographie?&lt;/a&gt;&lt;/h3&gt;\n    &lt;p class=\"card-text\"&gt;Ina Krapp · 1. Oktober 2026 · Geography Connect Convention, Osnabrück&lt;/p&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\n&lt;div class=\"card\"&gt;\n  &lt;a href=\"../../presentations/Zentrum/index.html\"&gt;\n    &lt;img src=\"../../presentations/Zentrum/thumbnail.png\" class=\"card-img-top\" alt=\"Vortrags-Titelbild\"&gt;\n  &lt;/a&gt;\n  &lt;div class=\"card-body\"&gt;\n    &lt;h3 class=\"card-title\"&gt;&lt;a href=\"../../presentations/Zentrum/index.html\"&gt;Wie findet man ein Zentrum?&lt;/a&gt;&lt;/h3&gt;\n    &lt;p class=\"card-text\"&gt;Ina Krapp&lt;/p&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\n&lt;div class=\"card\"&gt;\n  &lt;a href=\"../../presentations/LLM_assistants/index.html\"&gt;\n    &lt;img src=\"../../presentations/LLM_assistants/thumbnail.png\" class=\"card-img-top\" alt=\"Vortrags-Titelbild\"&gt;\n  &lt;/a&gt;\n  &lt;div class=\"card-body\"&gt;\n    &lt;h3 class=\"card-title\"&gt;&lt;a href=\"../../presentations/LLM_assistants/index.html\"&gt;Coding Assistants in RStudio and Visual Studio Code&lt;/a&gt;&lt;/h3&gt;\n    &lt;p class=\"card-text\"&gt;Ina Krapp&lt;/p&gt;\n  &lt;/div&gt;\n&lt;/div&gt;"
+    "text": "Meine Vorträge in voller Länge. (Zurzeit auf Englisch.)\n\n\n\n\n  \n\n\nBrauchen wir „fortgeschrittenere” Statistik in der Geographie?\n\n\nIna Krapp · 1. Oktober 2026 · Geography Connect Convention, Osnabrück\n\n\n\n\n\n\n  \n\n\nWie findet man ein Zentrum?\n\n\nIna Krapp\n\n\n\n\n\n\n  \n\n\nCoding Assistants in RStudio and Visual Studio Code\n\n\nIna Krapp"
   },
   {
     "objectID": "de/blog/index.html",
     "href": "de/blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nsfcentralities: Zentralitätsmaße aus sf-Objekten berechnen\n\n\n\n\n\n\n\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\nWisp: Lokal laufende Version von Whisper\n\n\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\n\n\n\n\n\nEin ARIMA-Modell für die globale Durchschnittstemperatur\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nsfcentralities: Zentralitätsmaße aus sf-Objekten berechnen\n\n\n\n\n\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\nWisp: Lokal laufende Version von Whisper\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\n\n\n\n\n\nEin ARIMA-Modell für die globale Durchschnittstemperatur\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "de/blog/sfcentralities.html",
