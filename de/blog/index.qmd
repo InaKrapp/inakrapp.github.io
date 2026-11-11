@@ -1,0 +1,10 @@
+---
+title: "Blog"
+listing:
+  contents: "."          # sucht .qmd-Dateien in diesem Ordner
+  type: default          # oder "grid" bzw. "table"
+  sort: "date desc"
+  fields: [date, title, description, categories]
+  filter-ui: true        # fügt eine Such-/Filterleiste hinzu
+  sort-ui: true
+---

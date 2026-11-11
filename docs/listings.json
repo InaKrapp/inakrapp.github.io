@@ -1,18 +1,27 @@
 [
   {
-    "listing": "/presentations.html",
-    "items": [
-      "/presentations/LLM_assistants/index.html",
-      "/presentations/Zentrum/index.html",
-      "/presentations/Statistik/index.html"
-    ]
-  },
-  {
     "listing": "/blog/index.html",
     "items": [
       "/blog/sfcentralities.html",
       "/blog/Wisp.html",
       "/blog/ARIMA.html"
+    ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/presentations/LLM_assistants/index.html",
+      "/de/presentations/index.html",
+      "/presentations/Zentrum/index.html",
+      "/presentations/Statistik/index.html"
+    ]
+  },
+  {
+    "listing": "/de/blog/index.html",
+    "items": [
+      "/de/blog/sfcentralities.html",
+      "/de/blog/Wisp.html",
+      "/de/blog/ARIMA.html"
     ]
   }
 ]

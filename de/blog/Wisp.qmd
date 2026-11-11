@@ -1,0 +1,17 @@
+---
+title: "Wisp: Lokal laufende Version von Whisper"
+layout: post
+date: 2024-04-13
+---
+Whisper ist eine Transkriptionssoftware, die Audiodateien in Text umwandeln kann. Ich habe eine lokal laufende Version davon erstellt, Wisp, mit dem Ziel, ihr eine einfache und intuitive Benutzeroberfläche zu geben. Mein Projekt findet ihr hier: [Wisp](https://github.com/InaKrapp/whisper-locally-running)
+
+Whisper selbst wurde von OpenAI entwickelt, der Firma hinter ChatGPT und zahlreichen anderen Künstlichen Intelligenzen.
+Ihr könnt es hier ausprobieren: ‚[Whisper-Demo](https://huggingface.co/openai/whisper-large-v3)‘.
+
+Im Gegensatz zu ChatGPT hat Whisper keine von OpenAI gestaltete Benutzeroberfläche. Seine Demos - wie ihr vielleicht beim Ausprobieren gesehen habt - werden oft von vielen Menschen gleichzeitig genutzt. Da alle ihre Anfragen an denselben Computer senden, müssen manche eine sehr lange Zeit warten, bis sie den Text erhalten. Alternativ kann Whisper lokal mit Python ausgeführt werden, aber für jemanden, der nicht mit einer Programmiersprache umgeht, ist das keine Option.
+
+Das Ziel meines Projekts war also, Whisper für jeden auf seinem eigenen Computer einfach nutzbar zu machen.
+
+Wisp soll ohne Internetverbindung laufen. Jeder Benutzer führt es auf seinem eigenen Computer aus, so dass man nicht darauf warten muss, bis der Text einer anderen Person transkribiert ist. Da es eine grafische Benutzeroberfläche hat, ist es für jeden, der mit Standard-Bürosoftware wie Microsoft Office vertraut ist, einfach zu bedienen.
+
+Wie bei vielen meiner anderen Projekte habe ich beim Bau dieses Programms viel gelernt. Zuvor hatte ich keine Erfahrung mit Audiodaten und sehr wenig damit, eine grafische Benutzeroberfläche in Python zu erstellen. Es war auch das erste Mal, dass ich ein Python-Programm in eine ausführbare Windows-Datei verwandelt habe.

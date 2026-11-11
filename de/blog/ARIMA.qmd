@@ -1,0 +1,17 @@
+---
+title: "Ein ARIMA-Modell für die globale Durchschnittstemperatur"
+layout: post
+date: 2023-08-12
+---
+Ich habe ein ARIMA-Modell geschrieben, das die durchschnittliche globale Temperatur vorhersagt.
+
+Ich würde es nicht als Klimamodell bezeichnen, denn es deckt nur einen von vielen Aspekten des Klimas ab. Natürlich ist es im Vergleich zu Modellen, die von Experten in diesem Bereich entwickelt wurden, viel eingeschränkter. Trotzdem hat mir die Entwicklung viel über das Vorhersagen von Zeitreihen beigebracht.
+
+Heute würde ich einige Dinge anders machen. Insbesondere würde ich vermutlich Menschen, die ARIMA-Modelle verwenden, davon abraten, fehlende Datenpunkte zu interpolieren.
+Das ARIMA-Modell kann auch dann verwendet werden, wenn Daten fehlen. Ursprünglich habe ich interpoliert, weil ich zusätzlich mit ETS-Modellen experimentiert habe, die eine lückenlose Zeitreihe erfordern. Das ETS-Modell ist jedoch nicht in der veröffentlichten Version des Codes enthalten, da seine Vorhersagen nicht sehr gut waren.
+
+Der Code (mit ausführlichen Kommentaren) kann [hier](https://github.com/InaKrapp/ARIMA_Temperature_model) heruntergeladen werden. Er ist in einem Quarto-Dokument geschrieben und sollte auf jeder relativ aktuellen Version von R und RStudio laufen.
+Die Dateien 'Global_Temperature.txt' und 'merged_ice_core_yearly.csv' enthalten die Daten, die das Modell verwendet, und müssen ebenfalls in denselben Ordner heruntergeladen werden, um den Code auszuführen.
+Für alle, die nur einen Blick auf die Ergebnisse werfen möchten und den Code nicht selbst ausführen oder ändern wollen, gibt es hier die [PDF-Version](https://github.com/InaKrapp/InaKrapp.github.io/raw/master/_posts/Global_Temperature_prediction_model.pdf).
+
+Nachtrag vom 19. Oktober 2023: Ich habe eine Version hochgeladen, die für Workshops in Deutschland genutzt werden kann. Sie befindet sich in dem Unterordner 'Workshop'.

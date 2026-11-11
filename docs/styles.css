@@ -1,1 +1,35 @@
 /* css styles */
+
+/* --- Language flag switcher (see site/i18n.js) --------------------------- */
+.i18n-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-inline-start: 0.25rem;
+  padding-inline: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.i18n-flag:hover,
+.i18n-flag:focus {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+.i18n-flag-svg {
+  width: 1.5rem;
+  height: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+  background: #fff;
+}
+.i18n-flag-txt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}

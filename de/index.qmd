@@ -1,0 +1,47 @@
+---
+title: "Ina Krapp"
+image: ../avatar.png
+about:
+  template: trestles
+  links:
+    - text: GitHub
+      icon: github
+      url: "https://github.com/InaKrapp"
+    - text: E-Mail
+      url: "mailto:ina.krapp@freenet.de"
+    - text: Blog
+      icon: pencil
+      url: "blog"
+    - text: Lebenslauf
+      url: "../CV_2026.pdf"
+comments: false
+---
+::: {.column-page}
+
+## Über mich
+
+
+Ich bin Ina Krapp, Fachangestellte beim Deutschen Wetterdienst. Mein Hauptinteresse liegt an der Schnittstelle zwischen Geographie und Informatik und den Beiträgen, die KI zu diesen Fachgebieten leisten kann.
+Mein akademischer Hintergrund ist Geographie und Quantitative Ökonomie, doch ich habe auf meinem Weg mehrere Programmiersprachen erlernt und programmiere ständig.
+
+Auf dieser Website führe ich eine Liste meiner [Publikationen](./papers), [Vorträge](./presentations) und meines [Lebenslaufs](../CV_2026.pdf), sowie einen [Blog](./blog).
+
+<p></p>
+
+## Ausgewählte Projekte
+
+#### R-Pakete
+
+**[sfhoneycombs](https://github.com/InaKrapp/sfhoneycombs)** | Leicht Honigwabenkarten erstellen | 2026
+
+**[sfcentralities](https://github.com/InaKrapp/sfcentralities)** | Einfache und schnelle Berechnung von Zentralpunkten | 2026
+
+#### Python-Projekte
+
+**[Wisp](https://github.com/InaKrapp/whisper-locally-running)** | Eine grafische Benutzeroberfläche für die Speech-to-Text-KI Whisper | 2024
+
+**[Quiz](https://github.com/InaKrapp/Quiz)** | Eine grafische Benutzeroberfläche für ein Quiz, mit Funktionen wie der Möglichkeit, Bilder bei Fragen abzubilden, einer Fortschrittsanzeige und einem Prüfungsmodus, in dem je nach Anzahl korrekt beantworteter Fragen über Bestehen oder Nichtbestehen informiert wird | 2025
+
+:::
+
+<link rel="me" href="https://github.com/InaKrapp">
